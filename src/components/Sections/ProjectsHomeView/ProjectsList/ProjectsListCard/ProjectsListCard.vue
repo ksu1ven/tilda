@@ -23,7 +23,7 @@
         <hr />
         <div class="projects-list-card__footer">
             <router-link
-                :to="{ name: 'EditView' }"
+                :to="{ name: 'EditView', params: { id: index + 1 } }"
                 class="button-link button-link--with-icon"
                 type="button"
             >
