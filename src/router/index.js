@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ProjectsHomeView from '../views/ProjectsHomeView.vue'
 import ProfileView from '../views/ProfileView.vue'
-import EditView from '../views/EditView.vue'
 import PreviewView from '../views/PreviewView.vue'
 
 const router = createRouter({
@@ -29,7 +28,7 @@ const router = createRouter({
         {
             path: '/edit/:id',
             name: 'EditView',
-            component: EditView
+            component: () => import('../views/EditView.vue')
         },
         {
             path: '/preview',
