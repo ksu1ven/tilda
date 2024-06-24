@@ -1,7 +1,6 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ProjectsHomeView from '../views/ProjectsHomeView.vue'
 import ProfileView from '../views/ProfileView.vue'
-import PreviewView from '../views/PreviewView.vue'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -28,7 +27,7 @@ const router = createRouter({
         {
             path: '/project/:id/preview',
             name: 'PreviewView',
-            component: PreviewView
+            component: () => import('../views/PreviewView.vue')
         },
         {
             path: '/profile',
