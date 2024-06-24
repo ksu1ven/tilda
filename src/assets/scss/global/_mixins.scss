@@ -1,0 +1,75 @@
+$breakpoints: (
+    'large-desktop': (
+        max-width: 1920px
+    ),
+    'desktop': (
+        max-width: 1439px
+    ),
+    'laptop': (
+        max-width: 992px
+    ),
+    'tablet': (
+        max-width: 768px
+    ),
+    'mobile': (
+        max-width: 576px
+    )
+) !default;
+
+@mixin respond-to($breakpoint) {
+    @if map-has-key($breakpoints, $breakpoint) {
+        @media #{inspect(map-get($breakpoints, $breakpoint))} {
+            @content;
+        }
+    } @else {
+        @warn "Unfortunately, no value could be retrieved from `#{$breakpoint}`. "
+          + "Available breakpoints are: #{map-keys($breakpoints)}.";
+    }
+}
+
+@mixin flex($dir, $jus, $ali) {
+    display: flex;
+    flex-direction: $dir;
+    justify-content: $jus;
+    align-items: $ali;
+}
+
+@mixin hover-active {
+    @media (pointer: coarse) {
+        &:active {
+            @content;
+        }
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        &:hover,
+        &:focus-visible {
+            @content;
+        }
+    }
+}
+
+@mixin transitions {
+    @media (pointer: coarse) {
+        transition-duration: $transition;
+    }
+
+    @media (hover: hover) and (pointer: fine) {
+        transition-duration: $transition-min;
+    }
+}
+
+@mixin paddings {
+    padding-top: $spacing-desktop;
+    padding-bottom: $spacing-desktop;
+
+    @include respond-to(tablet) {
+        padding-top: $spacing-tablet;
+        padding-bottom: $spacing-tablet;
+    }
+
+    @include respond-to(mobile) {
+        padding-top: $spacing-mobile;
+        padding-bottom: $spacing-mobile;
+    }
+}

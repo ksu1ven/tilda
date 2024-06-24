@@ -1,0 +1,17 @@
+@font-face {
+    font-family: 'TildaSans';
+    src:
+        local('TildaSans-Regular'),
+        url('../fonts/TildaSans-Regular/TildaSans-Regular.woff2') format('woff2'),
+        url('../fonts/TildaSans-Regular/TildaSans-Regular.woff') format('woff');
+    font-weight: 400;
+}
+
+@font-face {
+    font-family: 'TildaSans';
+    src:
+        local('TildaSans-Bold'),
+        url('../fonts/TildaSans-Bold/TildaSans-Bold.woff2') format('woff2'),
+        url('../fonts/TildaSans-Bold/TildaSans-Bold.woff') format('woff');
+    font-weight: 700;
+}

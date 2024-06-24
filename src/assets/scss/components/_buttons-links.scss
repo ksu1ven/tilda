@@ -1,0 +1,76 @@
+.button-link {
+    text-decoration: none;
+    text-align: left;
+    font-family: 'TildaSans', 'sans-serif';
+    font-size: 18px;
+
+    @include respond-to(mobile) {
+        font-size: 16px;
+    }
+}
+
+.button-link--with-icon {
+    position: relative;
+    @include flex(row, space-between, center);
+    column-gap: 10px;
+
+    @include hover-active {
+        .button-link__icon {
+            color: $color-accent-dark;
+        }
+        .button-link__icon--rounded {
+            color: $color-light;
+            background-color: $color-accent-dark;
+        }
+        .button-link__text {
+            background-size: 100% 2px;
+        }
+    }
+
+    .button-link__icon {
+        @include flex(row, center, center);
+        width: 20px;
+        height: 20px;
+        color: $color-accent;
+        @include transitions();
+        transition: color ease-in-out;
+    }
+
+    .button-link__icon--rounded {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        color: $color-light;
+        background-color: $color-accent;
+        @include transitions();
+        transition: background-color ease-in-out;
+    }
+
+    .button-link__text {
+        overflow-x: hidden;
+        color: $color-black;
+        background-image: linear-gradient(to bottom, $color-accent-dark, $color-accent-dark);
+        background-size: 0 2px;
+        background-position: 0 1.45em;
+        background-repeat: no-repeat;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        line-height: 1.5;
+        @include transitions();
+        transition: background-size ease-in-out;
+    }
+}
+
+.button-link--icon {
+    @include flex(row, center, center);
+    color: $color-black;
+
+    svg {
+        @include transitions();
+        transition: color ease-in-out;
+
+        @include hover-active {
+            color: $color-grey;
+        }
+    }
+}

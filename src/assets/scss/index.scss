@@ -1,0 +1,27 @@
+@import './global/variables';
+@import './global/reset';
+@import './global/fonts';
+@import './global/mixins';
+@import './global/animation';
+
+@import './components/buttons-links';
+
+@import './layout/header';
+@import './layout/container';
+
+@import './views/projects-home-view';
+
+@import './sections/projects-list';
+@import './sections/projects-list-card/projects-list-card';
+@import './sections/projects-list-card/projects-list-card-options';
+
+body {
+    min-height: 100vh;
+    overflow-x: hidden;
+    color: $color-white;
+    background-color: $color-light;
+    font-family: 'TildaSans', sans-serif;
+    font-size: 18px;
+    font-weight: 400;
+    word-break: break-word;
+}

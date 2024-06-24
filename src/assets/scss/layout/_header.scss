@@ -1,0 +1,44 @@
+.header {
+    background-color: $color-black;
+}
+
+.header__content {
+    padding: 30px 0;
+    @include flex(row, space-between, center);
+
+    @include respond-to(tablet) {
+        padding: 20px 0;
+    }
+}
+
+.header__link {
+    color: $color-white;
+    font-size: 22px;
+    @include transitions();
+    transition: color ease-in-out;
+
+    @include hover-active {
+        color: $color-accent;
+    }
+
+    @include respond-to(tablet) {
+        font-size: 20px;
+    }
+
+    @include respond-to(mobile) {
+        font-size: 18px;
+    }
+}
+
+.nav__ul {
+    @include flex(row, space-between, center);
+    column-gap: 30px;
+
+    @include respond-to(mobile) {
+        column-gap: 15px;
+    }
+}
+
+.router-link-active:not(:has(svg)) {
+    border-bottom: 3px solid $color-accent;
+}

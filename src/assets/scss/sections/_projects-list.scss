@@ -1,0 +1,35 @@
+.projects-list-heading {
+    @include flex(row, space-between, center);
+    font-size: 26px;
+
+    @include respond-to(tablet) {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}
+
+.projects-list-heading__h1 {
+    color: $color-grey;
+    font-weight: 700;
+}
+
+.projects-list {
+    @include paddings();
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-desktop;
+
+    @include respond-to(desktop) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.projects-list--empty {
+    @include paddings();
+    color: $color-grey;
+    font-size: 26px;
+
+    @include respond-to(mobile) {
+        font-size: 18px;
+    }
+}
