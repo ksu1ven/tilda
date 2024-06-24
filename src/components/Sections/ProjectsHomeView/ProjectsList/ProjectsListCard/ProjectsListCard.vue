@@ -22,14 +22,18 @@
         </h2>
         <hr />
         <div class="projects-list-card__footer">
-            <button class="button-link button-link--with-icon" type="button">
+            <router-link
+                :to="{ name: 'EditView' }"
+                class="button-link button-link--with-icon"
+                type="button"
+            >
                 <svg role="img" aria-hidden="true" width="20" height="20" class="button-link__icon">
                     <use xlink:href="#edit-icon"></use>
                 </svg>
                 <span class="button-link__text"
                     ><strong>{{ 'Редактировать сайт'.toUpperCase() }}</strong></span
                 >
-            </button>
+            </router-link>
             <router-link
                 :to="{ name: 'ProjectView', params: { id: index + 1 } }"
                 class="button-link button-link--with-icon"
