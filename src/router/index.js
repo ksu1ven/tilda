@@ -21,19 +21,19 @@ const router = createRouter({
             component: () => import('../views/ProjectView.vue')
         },
         {
-            path: '/profile',
-            name: 'ProfileView',
-            component: ProfileView
-        },
-        {
-            path: '/edit/:id',
+            path: '/project/:id/edit',
             name: 'EditView',
             component: () => import('../views/EditView.vue')
         },
         {
-            path: '/preview',
+            path: '/project/:id/preview',
             name: 'PreviewView',
             component: PreviewView
+        },
+        {
+            path: '/profile',
+            name: 'ProfileView',
+            component: ProfileView
         }
     ]
 })

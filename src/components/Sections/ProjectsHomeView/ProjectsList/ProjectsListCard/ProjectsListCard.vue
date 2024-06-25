@@ -22,7 +22,7 @@
         </h2>
         <hr />
         <div class="projects-list-card__footer">
-            <router-link
+            <RouterLink
                 :to="{ name: 'EditView', params: { id: index + 1 } }"
                 class="button-link button-link--with-icon"
                 type="button"
@@ -33,15 +33,15 @@
                 <span class="button-link__text"
                     ><strong>{{ 'Редактировать сайт'.toUpperCase() }}</strong></span
                 >
-            </router-link>
-            <router-link
+            </RouterLink>
+            <RouterLink
                 :to="{ name: 'ProjectView', params: { id: index + 1 } }"
                 class="button-link button-link--with-icon"
             >
                 <svg role="img" aria-hidden="true" width="20" height="20" class="button-link__icon">
                     <use xlink:href="#open-site-icon"></use>
                 </svg>
-                <span class="button-link__text"> {{ projectRoute }} </span></router-link
+                <span class="button-link__text"> {{ projectRoute }} </span></RouterLink
             >
         </div>
     </li>
