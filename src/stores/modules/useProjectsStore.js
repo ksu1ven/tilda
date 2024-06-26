@@ -73,13 +73,13 @@ export const useProjectsStore = defineStore('projects', {
 
     actions: {
         addProject() {
-            const newId = this.projects.at(-1).id + 1
+            const newId = this.projects?.at(-1)?.id + 1 || 1
             this.projects.push({
                 id: newId,
                 pages: [
                     {
                         id: 1,
-                        title: 'Page',
+                        title: 'Page 1',
                         description: 'Тестовое описание',
                         url: 'Тестовый адрес',
                         icon: pageIcon,
@@ -98,8 +98,8 @@ export const useProjectsStore = defineStore('projects', {
             const project = this.findProjectById(projectId)
             if (project) {
                 project.pages.push({
-                    id: project.pages.at(-1).id + 1,
-                    title: `Page ${project.pages.at(-1).id + 1}`,
+                    id: project.pages?.at(-1)?.id + 1 || 1,
+                    title: `Page ${project.pages?.at(-1)?.id + 1 || 1}`,
                     description: 'Тестовое описание',
                     url: 'Тестовый адрес',
                     icon: pageIcon,

@@ -114,6 +114,7 @@ export default {
             this.title = ''
             this.description = ''
             this.url = ''
+            this.icon = ''
             this.updatePageData()
             this.hideModal(this.modalType)
         },
