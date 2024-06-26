@@ -4,13 +4,13 @@
             <nav>
                 <ul class="nav__ul">
                     <li>
-                        <RouterLink to="/home" class="header__link">
+                        <RouterLink to="/" class="header__link">
                             <svg role="img" aria-hidden="true" width="35" height="35">
                                 <use xlink:href="#logo-icon"></use>
                             </svg>
                         </RouterLink>
                     </li>
-                    <li><RouterLink to="/home" class="header__link"> Мои сайты </RouterLink></li>
+                    <li><RouterLink to="/" class="header__link"> Мои сайты </RouterLink></li>
                     <li>
                         <RouterLink to="/profile" class="header__link"> Профиль </RouterLink>
                     </li>

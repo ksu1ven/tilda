@@ -61,6 +61,21 @@
     }
 }
 
+.button-link--colored {
+    padding: 15px 20px;
+    border-radius: 40px;
+    @include flex(row, space-between, center);
+    column-gap: 10px;
+    color: $color-white;
+    background-color: $color-accent;
+    @include transitions();
+    transition: background-color ease-in-out;
+
+    @include hover-active {
+        background-color: $color-accent-dark;
+    }
+}
+
 .button-link--icon {
     @include flex(row, center, center);
     color: $color-black;

@@ -2,7 +2,7 @@
     <div
         class="projects-list-card-options"
         :class="isOptionsVisible ? 'projects-list-card-options--active' : ''"
-        v-click-outside="closePopup"
+        v-click-outside="{ handler: closePopup, exclude: excludeRef }"
     >
         <button
             class="button-link button-link--icon projects-list-card-options__btn"
@@ -22,7 +22,7 @@
         <button
             type="button"
             class="button-link projects-list-card-options__option"
-            @click="deleteProject"
+            @click="deleteSelectedProject"
         >
             Удалить
         </button>
@@ -30,30 +30,43 @@
 </template>
 
 <script>
+import { mapActions } from 'pinia'
+import { useProjectsStore } from '../../../../../stores'
+
 export default {
     props: {
+        id: {
+            type: Number,
+            required: true
+        },
         isOptionsVisible: {
             type: Boolean,
             required: true
+        },
+        excludeRef: {
+            type: Object
         }
     },
     data() {
         return { newTitle: '' }
     },
-    emits: ['close-options', 'delete-project', 'edit-title'],
+    emits: ['close-options'],
     methods: {
+        ...mapActions(useProjectsStore, ['removeProject']),
+
         closePopup() {
             this.$emit('close-options')
         },
-        deleteProject() {
-            this.$emit('delete-project')
-            this.$emit('close-options')
-        },
-        editTitle() {
-            this.$emit('edit-title', this.newTitle)
-            this.newTitle = ''
+
+        deleteSelectedProject() {
+            this.removeProject(this.id)
             this.$emit('close-options')
         }
+        // editTitle() {
+        //     this.$emit('edit-title', this.newTitle)
+        //     this.newTitle = ''
+        //     this.$emit('close-options')
+        // }
     }
 }
 </script>

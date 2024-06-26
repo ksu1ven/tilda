@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import ProjectsHomeView from '../views/ProjectsHomeView.vue'
+import ProjectsMainView from '../views/ProjectsMainView.vue'
 import ProfileView from '../views/ProfileView.vue'
 
 const router = createRouter({
@@ -7,25 +7,21 @@ const router = createRouter({
     routes: [
         {
             path: '/',
-            redirect: { name: 'ProjectHomeView' }
-        },
-        {
-            path: '/home',
             name: 'ProjectHomeView',
-            component: ProjectsHomeView
+            component: ProjectsMainView
         },
         {
-            path: '/project/:id',
+            path: '/project/:projectId',
             name: 'ProjectView',
             component: () => import('../views/ProjectView.vue')
         },
         {
-            path: '/project/:id/edit',
+            path: '/project/:projectId/edit/:pageId',
             name: 'EditView',
             component: () => import('../views/EditView.vue')
         },
         {
-            path: '/project/:id/preview',
+            path: '/project/:projectId/preview/:pageId',
             name: 'PreviewView',
             component: () => import('../views/PreviewView.vue')
         },

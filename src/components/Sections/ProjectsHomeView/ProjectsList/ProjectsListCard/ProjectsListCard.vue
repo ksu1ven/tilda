@@ -3,6 +3,7 @@
         <button
             class="button-link button-link--icon projects-list-card__options-btn"
             @click="isOptionsVisible = true"
+            ref="excludeElement"
         >
             <svg role="img" aria-hidden="true" width="30" height="30">
                 <use xlink:href="#options-icon"></use>
@@ -12,18 +13,16 @@
             <ProjectsListCardOptions
                 v-show="isOptionsVisible"
                 :isOptionsVisible
+                :excludeRef="excludeElement"
+                :id="item.id"
                 @close-options="isOptionsVisible = false"
-                @delete-project="deleteProject"
-                @edit-title="editTitle"
         /></Transition>
 
-        <h2 class="projects-list-card__h2">
-            {{ item.title }}{{ item.defaultTitle ? `  ${index + 1}` : '' }}
-        </h2>
+        <h2 class="projects-list-card__h2">My project {{ item.id }}</h2>
         <hr />
         <div class="projects-list-card__footer">
             <RouterLink
-                :to="{ name: 'EditView', params: { id: index + 1 } }"
+                :to="{ name: 'EditView', params: { projectId: item.id, pageId: 1 } }"
                 class="button-link button-link--with-icon"
                 type="button"
             >
@@ -35,7 +34,7 @@
                 >
             </RouterLink>
             <RouterLink
-                :to="{ name: 'ProjectView', params: { id: index + 1 } }"
+                :to="{ name: 'ProjectView', params: { projectId: item.id } }"
                 class="button-link button-link--with-icon"
             >
                 <svg role="img" aria-hidden="true" width="20" height="20" class="button-link__icon">
@@ -53,33 +52,32 @@ export default {
     components: {
         ProjectsListCardOptions
     },
-    emits: ['delete-project', 'edit-title'],
+
+    // emits: ['edit-title'],
     props: {
         item: {
             type: Object,
-            required: true
-        },
-        index: {
-            type: Number,
             required: true
         }
     },
     data() {
         return {
-            isOptionsVisible: false
+            isOptionsVisible: false,
+            excludeElement: null
         }
     },
     methods: {
-        deleteProject() {
-            this.$emit('delete-project', this.index)
-        },
-        editTitle(newTitleValue) {
-            this.$emit('edit-title', this.index, newTitleValue)
-        }
+        // editTitle(newTitleValue) {
+        //     this.$emit('edit-title', this.index, newTitleValue)
+        // }
+    },
+
+    mounted() {
+        this.excludeElement = this.$refs.excludeElement
     },
     computed: {
         projectRoute() {
-            return `${window.location.origin}/project/${this.index + 1}`
+            return `${window.location.origin}/project/${this.item.id}`
         }
     }
 }

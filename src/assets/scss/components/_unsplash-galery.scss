@@ -1,0 +1,85 @@
+.unsplash-galery__form {
+    @include flex(row, space-between, center);
+    column-gap: 30px;
+    margin-bottom: 30px;
+
+    @include respond-to(mobile) {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}
+
+.unsplash-galery__selected-buttons {
+    @include flex(row, space-between, center);
+    column-gap: 30px;
+
+    @include respond-to(mobile) {
+        flex-direction: column;
+        align-items: center;
+        row-gap: 10px;
+    }
+}
+
+.unsplash-galery__selected-img {
+    position: relative;
+    width: 200px;
+    height: 200px;
+    margin-bottom: 30px;
+
+    @include respond-to(tablet) {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+.unsplash-galery__input {
+    flex: 1 1 50%;
+    padding: 10px 20px;
+    margin-top: 10px;
+    border: 1px solid $color-black;
+    border-radius: $border-radius;
+    color: $color-black;
+}
+
+.unsplash-galery__results {
+    flex: 0 1 50%;
+    max-height: 360px;
+    overflow-y: scroll;
+    display: grid;
+    grid-template-columns: repeat(2, 100px);
+    gap: 20px;
+
+    @include respond-to(tablet) {
+        grid-template-columns: repeat(3, 100px);
+        justify-content: center;
+        flex: 1 1 100%;
+        max-height: 100%;
+    }
+
+    @include respond-to(mobile) {
+        grid-template-columns: 1fr;
+    }
+}
+
+.unsplash-galery__li {
+    position: relative;
+    width: 100px;
+    height: 100px;
+
+    @include respond-to(mobile) {
+        width: 200px;
+        height: auto;
+        aspect-ratio: 1;
+    }
+}
+
+.flex-2-col {
+    @include flex(row, space-between, stretch);
+
+    @include respond-to(tablet) {
+        flex-direction: column-reverse;
+        align-items: center;
+        row-gap: 20px;
+        padding-bottom: 20px;
+    }
+}

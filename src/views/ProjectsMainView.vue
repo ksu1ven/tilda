@@ -6,6 +6,10 @@
     </main>
 </template>
 
-<script setup>
+<script>
 import ProjectsList from '@/components/Sections/ProjectsHomeView/ProjectsList/ProjectsList.vue'
+
+export default {
+    components: { ProjectsList }
+}
 </script>

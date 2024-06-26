@@ -1,0 +1,14 @@
+.project-view {
+    @include paddings();
+    background-color: $color-light;
+}
+
+.project-view__content {
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include respond-to(laptop) {
+        width: 100%;
+    }
+}

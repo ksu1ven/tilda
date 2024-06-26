@@ -1,7 +1,7 @@
 <template>
     <div class="projects-list-heading">
         <h1 class="projects-list-heading__h1">Мои сайты</h1>
-        <button type="button" class="button-link button-link--with-icon" @click="addNewProject">
+        <button type="button" class="button-link button-link--with-icon" @click="addProject">
             <span class="button-link__icon button-link__icon--rounded">
                 <svg role="img" aria-hidden="true" width="15" height="15">
                     <use xlink:href="#add-icon"></use>
@@ -11,16 +11,9 @@
         </button>
     </div>
 
-    <ul class="projects-list" v-if="projectsList.length">
+    <ul class="projects-list" v-if="projects.length">
         <TransitionGroup>
-            <ProjectsListCard
-                v-for="(project, index) in projectsList"
-                :key="index"
-                :item="project"
-                :index="index"
-                @delete-project="deleteProject"
-                @edit-title="editTitle"
-            />
+            <ProjectsListCard v-for="item in projects" :key="item.id" :item />
         </TransitionGroup>
     </ul>
     <div class="projects-list--empty" v-else>Сайтов пока не добавлено :(</div>
@@ -28,38 +21,24 @@
 
 <script>
 import ProjectsListCard from './ProjectsListCard/ProjectsListCard.vue'
+import { mapState, mapActions } from 'pinia'
+import { useProjectsStore } from '../../../../stores'
 
 export default {
     components: { ProjectsListCard },
 
-    data() {
-        return {
-            projectsList: [
-                { title: 'My project', defaultTitle: true },
-                { title: 'My project', defaultTitle: true },
-                { title: 'My project', defaultTitle: true },
-                { title: 'My project', defaultTitle: true }
-            ]
-        }
+    computed: {
+        ...mapState(useProjectsStore, ['projects'])
     },
     methods: {
-        addNewProject() {
-            this.projectsList.push({
-                title: 'My project',
-                defaultTitle: true
-            })
-        },
+        ...mapActions(useProjectsStore, ['addProject'])
 
-        deleteProject(ind) {
-            this.projectsList.splice(ind, 1)
-        },
-
-        editTitle(ind, newTitle) {
-            this.projectsList[ind] = {
-                title: newTitle,
-                defaultTitle: false
-            }
-        }
+        // editTitle(ind, newTitle) {
+        //     this.projectsList[ind] = {
+        //         title: newTitle,
+        //         defaultTitle: false
+        //     }
+        // }
     }
 }
 </script>

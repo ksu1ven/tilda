@@ -1,0 +1,68 @@
+.pages-list-card {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    @include flex(row, space-between, center);
+    border-bottom: 2px solid $color-grey;
+
+    @include respond-to(laptop) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+        column-gap: 20px;
+    }
+
+    @include respond-to(mobile) {
+        flex-direction: column;
+        row-gap: 20px;
+        align-items: stretch;
+    }
+}
+
+.pages-list-card__data {
+    @include flex(row, flex-start, center);
+    column-gap: 30px;
+
+    @include respond-to(laptop) {
+        column-gap: 20px;
+    }
+
+    @include respond-to(mobile) {
+        flex-direction: column;
+    }
+}
+
+.pages-list-card__img-container {
+    position: relative;
+    overflow: hidden;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+}
+
+.pages-list-card__h3 {
+    margin-bottom: 10px;
+    color: $color-black;
+    font-size: 48px;
+
+    @include respond-to(laptop) {
+        font-size: 30px;
+    }
+}
+
+.pages-list-card__options {
+    @include flex(row, flex-end, center);
+    column-gap: 30px;
+
+    @include respond-to(laptop) {
+        flex-direction: column;
+        align-items: flex-end;
+        row-gap: 10px;
+    }
+
+    @include respond-to(mobile) {
+        align-items: flex-start;
+    }
+}
+
+.pages-list-card__description {
+    color: $color-grey;
+}

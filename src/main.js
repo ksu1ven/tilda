@@ -12,15 +12,12 @@ app.use(createPinia())
 app.use(router)
 
 app.directive('click-outside', {
-    beforeMount(el, binding) {
+    updated(el, binding) {
         el.clickOutsideEvent = function (event) {
-            if (
-                !(el === event.target || el.contains(event.target)) &&
-                !event.target
-                    .closest('button')
-                    ?.classList.contains('projects-list-card__options-btn')
-            ) {
-                binding.value(event)
+            const { handler, exclude } = binding.value
+            const clickedOnExcludedEl = exclude?.contains(event.target)
+            if (!el.contains(event.target) && !clickedOnExcludedEl) {
+                handler(event)
             }
         }
         document.body.addEventListener('click', el.clickOutsideEvent)

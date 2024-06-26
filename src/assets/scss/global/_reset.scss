@@ -28,6 +28,7 @@ pre {
     display: block;
     unicode-bidi: embed;
     font-size: inherit;
+    box-sizing: border-box;
 }
 li {
     display: list-item;
@@ -131,6 +132,7 @@ select {
     border: none;
     outline: none;
     background-color: transparent;
+    box-sizing: border-box;
 }
 button {
     cursor: pointer;
