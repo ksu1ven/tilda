@@ -75,6 +75,7 @@
 
 .page-settings-modal {
     padding-bottom: 30px;
+    border-radius: $border-radius;
 
     @include respond-to(tablet) {
         padding-bottom: 20px;
@@ -119,7 +120,8 @@
     }
 }
 
-.page-settings-modal__label {
+.page-settings-modal__label,
+.edit-block-content-modal__label {
     display: block;
     width: 80%;
     margin-left: auto;
@@ -133,7 +135,8 @@
 }
 
 .page-settings-modal__input,
-.domain-modal__input {
+.domain-modal__input,
+.edit-block-content-modal__textarea {
     display: block;
     width: 100%;
     padding: 10px 20px;
@@ -157,13 +160,18 @@
     @include flex(row, center, center);
     border-radius: $border-radius;
 
+    img {
+        border-radius: $border-radius;
+    }
+
     @include respond-to(tablet) {
         width: 200px;
         height: 200px;
     }
 }
 
-.page-settings-modal__open-unsplash-button {
+.page-settings-modal__open-unsplash-button,
+.edit-block-content-modal__open-unsplash-button {
     position: relative;
     z-index: 2;
     padding: 15px 20px;
@@ -310,4 +318,60 @@
 .edit-blocks-examples__p {
     color: $color-grey;
     text-align: center;
+}
+
+.edit-block-content-modal {
+    padding-top: 30px;
+    padding-bottom: 30px;
+
+    @include respond-to(tablet) {
+        padding-top: 20px;
+        padding-bottom: 20px;
+    }
+}
+
+.edit-block-content-modal__fields {
+    padding: 30px;
+
+    @include respond-to(large-desktop) {
+        padding: 20px;
+    }
+}
+
+.edit-block-content-modal__galery {
+    border-radius: $border-radius;
+    background-color: $color-white;
+    padding: 0 30px 30px;
+
+    @include respond-to(large-desktop) {
+        padding: 0 20px 20px;
+    }
+}
+
+.edit-block-content-modal__submit {
+    display: block;
+    margin-top: 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit-block-content-modal__img-container {
+    position: relative;
+    width: 80%;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    @include flex(row, center, center);
+    border-radius: $border-radius;
+
+    img {
+        border-radius: $border-radius;
+    }
+    @include respond-to(large-desktop) {
+        height: 150px;
+    }
+
+    @include respond-to(desktop) {
+        width: 100%;
+    }
 }

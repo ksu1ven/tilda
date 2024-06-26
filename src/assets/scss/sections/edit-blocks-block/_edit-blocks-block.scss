@@ -4,18 +4,25 @@
 }
 
 .edit-block-header {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    @include transitions;
+    transition: opacity $transition ease;
+
     &:not(:first-child) {
-        @include paddings();
+        margin-top: $spacing-desktop;
+        margin-bottom: $spacing-desktop;
     }
     &:first-child {
-        padding-bottom: $spacing-desktop;
+        margin-bottom: $spacing-desktop;
 
         @include respond-to(tablet) {
-            padding-bottom: $spacing-tablet;
+            margin-bottom: $spacing-tablet;
         }
 
         @include respond-to(mobile) {
-            padding-bottom: $spacing-mobile;
+            margin-bottom: $spacing-mobile;
         }
     }
 }
@@ -48,10 +55,12 @@
     }
 }
 
-.edit-block-text {
-    margin-bottom: 10px;
+.edit-block-header__text {
     color: $color-grey;
     font-size: 26px;
+
+    @include transitions;
+    transition: opacity $transition ease;
 
     @include respond-to(tablet) {
         font-size: 22px;
@@ -62,16 +71,51 @@
     }
 }
 
+.edit-block-text {
+    position: relative;
+    padding-top: 30px;
+    padding-bottom: 30px;
+    margin-top: $spacing-desktop;
+    margin-bottom: $spacing-desktop;
+    color: $color-grey;
+    font-size: 26px;
+
+    @include respond-to(tablet) {
+        margin-top: $spacing-tablet;
+        margin-bottom: $spacing-tablet;
+        font-size: 22px;
+    }
+
+    @include respond-to(mobile) {
+        margin-top: $spacing-mobile;
+        margin-bottom: $spacing-mobile;
+        font-size: 18px;
+    }
+}
+
 .edit-block-img {
+    position: relative;
     width: 100%;
     aspect-ratio: 1.7777;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    margin-top: $spacing-desktop;
+    margin-bottom: $spacing-desktop;
     @include flex(column, center, center);
     color: $color-white;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
+    @include transitions;
+    transition: opacity $transition ease;
+
+    @include respond-to(tablet) {
+        margin-top: $spacing-tablet;
+        margin-bottom: $spacing-tablet;
+    }
+
+    @include respond-to(mobile) {
+        margin-top: $spacing-mobile;
+        margin-bottom: $spacing-mobile;
+    }
 
     &__h2 {
         margin-bottom: 30px;
@@ -98,10 +142,86 @@
 
         @include respond-to(tablet) {
             font-size: 22px;
+            width: 90%;
         }
 
         @include respond-to(mobile) {
             font-size: 18px;
         }
     }
+}
+
+.edit-block-header:hover,
+.edit-block-text:hover,
+.edit-block-img:hover {
+    .edit-block-wrapper {
+        opacity: 1;
+    }
+}
+
+.edit-block-wrapper {
+    width: 0;
+    height: 0;
+    opacity: 0;
+}
+
+.edit-block-wrapper__content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+
+    @include respond-to(tablet) {
+        transform: translate(-10%, -50%);
+    }
+
+    @include respond-to(mobile) {
+        transform: translate(0, -50%);
+    }
+}
+
+.edit-block-wrapper__add {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, 50%);
+    color: $color-accent;
+
+    @include hover-active {
+        svg {
+            color: $color-accent-dark !important;
+        }
+    }
+}
+
+.edit-block-wrapper__buttons {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: translate(50%, -50%);
+    padding: 10px;
+    @include flex(row, space-between, stretch);
+    column-gap: 10px;
+    background-color: $color-light;
+
+    button {
+        color: $color-accent;
+        @include hover-active {
+            svg {
+                color: $color-accent-dark !important;
+            }
+        }
+    }
+
+    @include respond-to(tablet) {
+        transform: translate(10%, -50%);
+    }
+
+    @include respond-to(mobile) {
+        transform: translate(0, -50%);
+    }
+}
+
+.edit-block-wrapper__btn {
+    color: $color-accent;
 }

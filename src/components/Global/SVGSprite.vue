@@ -126,7 +126,7 @@
                     <path
                         d="M72.1407,49.7859 C82.9967,37.5449 81.8757,18.8189 69.6337,7.9629 C57.3927,-2.8951 38.6677,-1.7731 27.8117,10.4679 C16.9527,22.7109 18.0767,41.4329 30.3177,52.2909 C42.5577,63.1469 61.2807,62.0269 72.1407,49.7859 Z"
                         id="Stroke-1"
-                        stroke="#231F20"
+                        stroke="currentColor"
                         stroke-width="6"
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -134,7 +134,7 @@
                     <path
                         d="M22.9645,60.58 L30.0205,52.627"
                         id="Stroke-3"
-                        stroke="#231F20"
+                        stroke="currentColor"
                         stroke-width="6"
                         stroke-linecap="round"
                         stroke-linejoin="round"
@@ -148,6 +148,64 @@
                     </g>
                 </g>
             </g>
+        </symbol>
+
+        <symbol id="plus-icon" viewBox="0 0 27 27" fill="none">
+            <defs />
+            <g
+                id="Page-1"
+                stroke="none"
+                stroke-width="1"
+                fill="none"
+                fill-rule="evenodd"
+                sketch:type="MSPage"
+            >
+                <g id="tp-08-add" sketch:type="MSLayerGroup">
+                    <path
+                        d="M13.5,26.5 C6.32026694,26.5 0.5,20.6797331 0.5,13.5 C0.5,6.32026694 6.32026694,0.5 13.5,0.5 C20.6797331,0.5 26.5,6.32026694 26.5,13.5 C26.5,20.6797331 20.6797331,26.5 13.5,26.5 Z"
+                        id="Shape"
+                        fill="currentColor"
+                        sketch:type="MSShapeGroup"
+                    />
+                    <path
+                        d="M12.879,8.826 L12.879,12.897 L8.964,12.897 L8.964,13.936 L12.879,13.936 L12.879,18.042 L13.988,18.042 L13.988,13.936 L17.903,13.936 L17.903,12.897 L13.988,12.897 L13.988,8.826 L12.879,8.826 L12.879,8.826 Z"
+                        id="Path"
+                        fill="white"
+                        sketch:type="MSShapeGroup"
+                    />
+                </g>
+            </g>
+        </symbol>
+
+        <symbol
+            id="copy-icon"
+            x="0px"
+            y="0px"
+            viewBox="-632 702.1 14.2 14.2"
+            enable-background="new -632 702.1 14.2 14.2"
+            xml:space="preserve"
+            fill="currentColor"
+        >
+            <g>
+                <path d="M-622.2,710.8h1.8v-6.5h-5.8v1.9l-1.5,0v-3.4h8.8v9.5h-3.2L-622.2,710.8z" />
+                <path
+                    d="M-625.7,706.1h3.6v4v1.5v4h-8.8v-9.5h3.7C-627.2,706.1-625.7,706.1-625.7,706.1z M-629.4,714.1h5.8v-6.5h-5.8   C-629.4,707.6-629.4,714.1-629.4,714.1z"
+                />
+            </g>
+        </symbol>
+
+        <symbol id="up-icon" viewBox="0 0 12 12" fill="none">
+            <path
+                d="M4.375 5.78947V12H6.625V5.78947H10L5.5 0L1 5.78947H4.375Z"
+                fill="currentColor"
+            ></path>
+        </symbol>
+
+        <symbol id="down-icon" viewBox="0 0 12 12" fill="none">
+            <path
+                d="M6.625 6.21053L6.625 -2.95052e-07L4.375 -4.91753e-07L4.375 6.21053L1 6.21053L5.5 12L10 6.21053L6.625 6.21053Z"
+                fill="currentColor"
+            ></path>
         </symbol>
     </svg>
 </template>

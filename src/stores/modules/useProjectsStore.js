@@ -56,7 +56,8 @@ export const useProjectsStore = defineStore('projects', {
                     }
                 ]
             }
-        ]
+        ],
+        emitsCounter: 0
     }),
     getters: {
         getProjectById: (state) => (id) => {
@@ -72,6 +73,9 @@ export const useProjectsStore = defineStore('projects', {
     },
 
     actions: {
+        updateEmitsCounter() {
+            this.emitsCounter += 1
+        },
         addProject() {
             const newId = this.projects?.at(-1)?.id + 1 || 1
             this.projects.push({
@@ -144,6 +148,39 @@ export const useProjectsStore = defineStore('projects', {
             if (project) {
                 const page = project.pages.find((p) => p.id === pageId)
                 page.content[contentIndex] = { ...page.content[contentIndex], ...newContent }
+            }
+        },
+        manipulateWithBlocks(projectId, pageId, contentIndex, action) {
+            const project = this.findProjectById(projectId)
+            if (project) {
+                const page = project.pages.find((p) => p.id === pageId)
+                let contentItem = { ...page.content[contentIndex] }
+                if (contentItem) {
+                    switch (action.type) {
+                        case 'remove':
+                            page.content.splice(contentIndex, 1)
+                            break
+                        case 'up':
+                            if (contentIndex - 1 >= 0) {
+                                page.content.splice(contentIndex, 1)
+                                page.content.splice(contentIndex - 1, 0, contentItem)
+                            }
+                            break
+
+                        case 'down':
+                            page.content.splice(contentIndex, 1)
+                            page.content.splice(contentIndex + 1, 0, contentItem)
+
+                            break
+
+                        case 'copy':
+                            page.content = page.content.concat(contentItem)
+                            break
+
+                        default:
+                            break
+                    }
+                }
             }
         }
     }

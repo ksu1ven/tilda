@@ -3,14 +3,18 @@ import { defineStore } from 'pinia'
 export const useModalsStore = defineStore('modals', {
     state: () => ({
         settingsModal: {
-            isPageSettingsModalShow: false,
+            isShow: false,
             pageNumber: 1
         },
         domainModal: {
-            isDomainModalShow: false
+            isShow: false
         },
         editBlocksModal: {
-            isEditBlocksModal: false
+            isShow: false
+        },
+        editBlockContentModal: {
+            isShow: false,
+            contentIndex: 0
         }
     }),
 
@@ -18,15 +22,19 @@ export const useModalsStore = defineStore('modals', {
         showModal(modalType, options) {
             switch (modalType) {
                 case 'pageSettings':
-                    this.settingsModal.isPageSettingsModalShow = true
+                    this.settingsModal.isShow = true
                     this.settingsModal.pageNumber = options.pageNumber
                     break
                 case 'domainModal':
-                    this.domainModal.isDomainModalShow = true
+                    this.domainModal.isShow = true
                     break
 
                 case 'editBlocksModal':
-                    this.editBlocksModal.isEditBlocksModal = true
+                    this.editBlocksModal.isShow = true
+                    break
+                case 'editBlockContentModal':
+                    this.editBlockContentModal.isShow = true
+                    this.editBlockContentModal.contentIndex = options.contentIndex
                     break
 
                 default:
@@ -36,15 +44,19 @@ export const useModalsStore = defineStore('modals', {
         hideModal(modalType) {
             switch (modalType) {
                 case 'pageSettings':
-                    this.settingsModal.isPageSettingsModalShow = false
+                    this.settingsModal.isShow = false
                     this.settingsModal.pageNumber = 1
                     break
                 case 'domainModal':
-                    this.domainModal.isDomainModalShow = false
+                    this.domainModal.isShow = false
                     break
 
                 case 'editBlocksModal':
-                    this.editBlocksModal.isEditBlocksModal = false
+                    this.editBlocksModal.isShow = false
+                    break
+                case 'editBlockContentModal':
+                    this.editBlockContentModal.isShow = false
+                    this.editBlockContentModal.contentIndex = 0
                     break
 
                 default:

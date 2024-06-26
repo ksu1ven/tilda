@@ -1,7 +1,7 @@
 <template>
     <ModalApp
         :modalType
-        :isModalShow="editBlocksModal.isEditBlocksModal"
+        :isModalShow="editBlocksModal.isShow"
         modalClass="modal-left-50"
         :withCross="false"
         contentClass="edit-blocks-modal"
@@ -72,7 +72,7 @@ import { mapState, mapActions } from 'pinia'
 
 export default {
     components: { ModalApp },
-    emits: ['block-added'],
+
     data() {
         return {
             projectId: +this.$route.params.projectId,
@@ -92,12 +92,12 @@ export default {
 
     methods: {
         ...mapActions(useModalsStore, ['hideModal']),
-        ...mapActions(useProjectsStore, ['addPageContent']),
+        ...mapActions(useProjectsStore, ['addPageContent', 'updateEmitsCounter']),
 
         addNewBlock(type, textAlign) {
             let content = { type, textAlign }
             this.addPageContent(this.projectId, this.pageId, content)
-            this.$emit('block-added')
+            this.updateEmitsCounter()
         }
     }
 }

@@ -4,14 +4,17 @@
         contenteditable="true"
         @input="changeText($event.target.textContent)"
     >
+        <BlockWrapper :index />
         {{ text }}
     </div>
 </template>
 
 <script>
+import BlockWrapper from './BlockWrapper.vue'
 import { useProjectsStore } from '../../../../../stores'
 import { mapActions } from 'pinia'
 export default {
+    components: { BlockWrapper },
     props: {
         index: {
             type: Number,

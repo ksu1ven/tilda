@@ -1,5 +1,6 @@
 <template>
     <div class="edit-block-img">
+        <BlockWrapper :index />
         <h2
             class="edit-block-img__h2"
             contenteditable="true"
@@ -18,9 +19,11 @@
 </template>
 
 <script>
+import BlockWrapper from './BlockWrapper.vue'
 import { useProjectsStore } from '../../../../../stores'
 import { mapActions } from 'pinia'
 export default {
+    components: { BlockWrapper },
     props: {
         index: {
             type: Number,

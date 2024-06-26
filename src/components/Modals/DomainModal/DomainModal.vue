@@ -1,7 +1,7 @@
 <template>
     <ModalApp
         :modalType
-        :isModalShow="domainModal.isDomainModalShow"
+        :isModalShow="domainModal.isShow"
         :withCross="true"
         contentClass="domain-modal"
     >

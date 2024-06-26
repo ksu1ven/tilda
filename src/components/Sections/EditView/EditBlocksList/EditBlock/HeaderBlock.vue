@@ -1,5 +1,6 @@
 <template>
     <div class="edit-block-header">
+        <BlockWrapper :index />
         <h2
             class="edit-block-header__h2"
             contenteditable="true"
@@ -15,7 +16,7 @@
             {{ h4 }}
         </h4>
         <div
-            class="edit-block-text"
+            class="edit-block-header__text"
             contenteditable="true"
             @input="changeText($event.target.textContent)"
         >
@@ -25,9 +26,11 @@
 </template>
 
 <script>
+import BlockWrapper from './BlockWrapper.vue'
 import { useProjectsStore } from '../../../../../stores'
 import { mapActions } from 'pinia'
 export default {
+    components: { BlockWrapper },
     props: {
         index: {
             type: Number,

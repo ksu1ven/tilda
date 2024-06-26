@@ -40,12 +40,7 @@ export default {
         TextBlock,
         ImgTextBlock
     },
-    props: {
-        counterEmits: {
-            type: Number,
-            required: true
-        }
-    },
+
     data() {
         return {
             projectId: +this.$route.params.projectId,
@@ -55,7 +50,7 @@ export default {
         }
     },
     computed: {
-        ...mapState(useProjectsStore, ['getPageContent']),
+        ...mapState(useProjectsStore, ['getPageContent', 'emitsCounter']),
 
         selectedBlockExamples() {
             return this.blocks[this.activeBlockIndex].variants
@@ -90,7 +85,7 @@ export default {
                         this.blocksComponentsList.push({
                             component: 'ImgTextBlock',
                             props: {
-                                backgroundImage: `url(${pageIcon})`,
+                                backgroundImage: `url(${block.icon || pageIcon})`,
                                 text: block.text,
                                 h2: block.h2
                             }
@@ -101,7 +96,7 @@ export default {
         }
     },
     watch: {
-        counterEmits: {
+        emitsCounter: {
             handler() {
                 this.updateBlockComponentsList(this.getPageContent(this.projectId, this.pageId))
             },

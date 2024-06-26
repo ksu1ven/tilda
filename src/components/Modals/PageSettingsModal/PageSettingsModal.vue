@@ -1,7 +1,7 @@
 <template>
     <ModalApp
         :modalType
-        :isModalShow="settingsModal.isPageSettingsModalShow"
+        :isModalShow="settingsModal.isShow"
         modalClass="modal modal--absolute"
         :withCross="true"
         contentClass="page-settings-modal"
@@ -132,8 +132,8 @@ export default {
         this.updatePageData()
     },
     watch: {
-        'settingsModal.isPageSettingsModalShow'() {
-            if (this.settingsModal.isPageSettingsModalShow === false) {
+        'settingsModal.isShow'() {
+            if (this.settingsModal.isShow === false) {
                 this.galeryVisible = false
             }
         }
