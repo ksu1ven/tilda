@@ -8,7 +8,7 @@
         transitionName="slide"
     >
         <div class="edit-blocks-modal-library">
-            <form action="" class="edit-blocks-modal-library__form">
+            <form action="" class="edit-blocks-modal-library__form" @submit.prevent="">
                 <input
                     type="text"
                     class="edit-blocks-modal-library__input"
