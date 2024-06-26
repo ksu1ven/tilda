@@ -1,7 +1,5 @@
 import { defineStore } from 'pinia'
 import pageIcon from '../../assets/images/cat.jpg'
-// я не смогла сделать pages=usePagesStore(), т.к. везде один экземпляр стора и при добавлении/ удалении страницы добавляется/удаляется на всех проектах
-// Чат GPT Не помог(
 
 export const useProjectsStore = defineStore('projects', {
     state: () => ({
@@ -11,10 +9,11 @@ export const useProjectsStore = defineStore('projects', {
                 pages: [
                     {
                         id: 1,
-                        title: 'Page',
+                        title: 'Page 1',
                         description: 'Тестовое описание',
                         url: 'Тестовый адрес',
-                        icon: pageIcon
+                        icon: pageIcon,
+                        content: []
                     }
                 ]
             },
@@ -23,10 +22,11 @@ export const useProjectsStore = defineStore('projects', {
                 pages: [
                     {
                         id: 1,
-                        title: 'Page',
+                        title: 'Page 1',
                         description: 'Тестовое описание',
                         url: 'Тестовый адрес',
-                        icon: pageIcon
+                        icon: pageIcon,
+                        content: []
                     }
                 ]
             },
@@ -35,10 +35,11 @@ export const useProjectsStore = defineStore('projects', {
                 pages: [
                     {
                         id: 1,
-                        title: 'Page',
+                        title: 'Page 1',
                         description: 'Тестовое описание',
                         url: 'Тестовый адрес',
-                        icon: pageIcon
+                        icon: pageIcon,
+                        content: []
                     }
                 ]
             },
@@ -47,10 +48,11 @@ export const useProjectsStore = defineStore('projects', {
                 pages: [
                     {
                         id: 1,
-                        title: 'Page',
+                        title: 'Page 1',
                         description: 'Тестовое описание',
                         url: 'Тестовый адрес',
-                        icon: pageIcon
+                        icon: pageIcon,
+                        content: []
                     }
                 ]
             }
@@ -59,6 +61,13 @@ export const useProjectsStore = defineStore('projects', {
     getters: {
         getProjectById: (state) => (id) => {
             return state.projects.find((project) => project.id === id)?.pages
+        },
+        getPageContent: (state) => (projectId, pageId) => {
+            const project = state.projects.find((project) => project.id === projectId)
+            if (project) {
+                const page = project.pages.find((p) => p.id === pageId)
+                return page.content
+            }
         }
     },
 
@@ -73,7 +82,8 @@ export const useProjectsStore = defineStore('projects', {
                         title: 'Page',
                         description: 'Тестовое описание',
                         url: 'Тестовый адрес',
-                        icon: pageIcon
+                        icon: pageIcon,
+                        content: []
                     }
                 ]
             })
@@ -89,10 +99,11 @@ export const useProjectsStore = defineStore('projects', {
             if (project) {
                 project.pages.push({
                     id: project.pages.at(-1).id + 1,
-                    title: 'Page',
+                    title: `Page ${project.pages.at(-1).id + 1}`,
                     description: 'Тестовое описание',
                     url: 'Тестовый адрес',
-                    icon: pageIcon
+                    icon: pageIcon,
+                    content: []
                 })
             }
         },
@@ -112,17 +123,27 @@ export const useProjectsStore = defineStore('projects', {
             const project = this.findProjectById(projectId)
             if (project) {
                 const page = project.pages.find((p) => p.id === pageId)
-                const { title, description, url } = newData
+                const { title, description, url, icon } = newData
                 page.title = title
                 page.description = description
                 page.url = url
+                page.icon = icon
             }
         },
-        editPageIcon(projectId, pageId, icon) {
+
+        addPageContent(projectId, pageId, newContent) {
             const project = this.findProjectById(projectId)
             if (project) {
                 const page = project.pages.find((p) => p.id === pageId)
-                page.icon = icon
+                page.content.push(newContent)
+            }
+        },
+
+        editPageContent(projectId, pageId, contentIndex, newContent) {
+            const project = this.findProjectById(projectId)
+            if (project) {
+                const page = project.pages.find((p) => p.id === pageId)
+                page.content[contentIndex] = { ...page.content[contentIndex], ...newContent }
             }
         }
     }

@@ -7,3 +7,14 @@
 .v-leave-to {
     opacity: 0;
 }
+
+.slide-enter-active,
+.slide-leave-active {
+    transition: transform $transition ease;
+    transform: translateX(0);
+}
+
+.slide-enter-from,
+.slide-leave-to {
+    transform: translateX(-100%);
+}

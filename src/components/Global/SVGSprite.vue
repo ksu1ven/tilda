@@ -118,5 +118,36 @@
                 </g>
             </g>
         </symbol>
+
+        <symbol id="search-icon" viewBox="0 0 83 88" fill="currentColor">
+            <defs />
+            <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+                <g id="Group-2" transform="translate(0.000000, 3.000000)">
+                    <path
+                        d="M72.1407,49.7859 C82.9967,37.5449 81.8757,18.8189 69.6337,7.9629 C57.3927,-2.8951 38.6677,-1.7731 27.8117,10.4679 C16.9527,22.7109 18.0767,41.4329 30.3177,52.2909 C42.5577,63.1469 61.2807,62.0269 72.1407,49.7859 Z"
+                        id="Stroke-1"
+                        stroke="#231F20"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                    <path
+                        d="M22.9645,60.58 L30.0205,52.627"
+                        id="Stroke-3"
+                        stroke="#231F20"
+                        stroke-width="6"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                    />
+                    <g id="Group-7" transform="translate(0.509760, 55.669850)">
+                        <polygon
+                            fill="currentColor"
+                            id="Fill-5"
+                            points="17.881346 0.586095332 0.0422513322 20.7236657 9.05523405 28.7906318 26.9228723 8.61908099"
+                        />
+                    </g>
+                </g>
+            </g>
+        </symbol>
     </svg>
 </template>

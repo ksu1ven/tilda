@@ -13,12 +13,15 @@
 
 @import './views/projects-home-view';
 @import './views/project-view';
+@import './views/edit-view';
 
 @import './sections/projects-list';
 @import './sections/projects-list-card/projects-list-card';
 @import './sections/projects-list-card/projects-list-card-options';
 @import './sections/pages-list';
 @import './sections/pages-list-card/pages-list-card';
+@import './sections/edit-blocks-list';
+@import './sections/edit-blocks-block/edit-blocks-block';
 
 body {
     min-height: 100vh;

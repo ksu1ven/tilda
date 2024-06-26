@@ -7,7 +7,7 @@
                 </div>
             </RouterLink>
             <RouterLink :to="{ name: 'EditView', params: { projectId, pageId: page.id } }">
-                <h3 class="pages-list-card__h3">{{ page.title }} {{ page.id }}</h3>
+                <h3 class="pages-list-card__h3">{{ page.title }}</h3>
                 <div class="pages-list-card__description">Описание: {{ page.description }}</div>
                 <div class="pages-list-card__description">Адрес: {{ page.url }}</div>
             </RouterLink>

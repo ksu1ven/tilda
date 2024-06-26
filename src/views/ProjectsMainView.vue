@@ -1,4 +1,5 @@
 <template>
+    <HeaderApp />
     <main class="projects-home-view">
         <div class="container">
             <ProjectsList />
@@ -7,9 +8,10 @@
 </template>
 
 <script>
+import HeaderApp from '@/components/HeaderApp.vue'
 import ProjectsList from '@/components/Sections/ProjectsHomeView/ProjectsList/ProjectsList.vue'
 
 export default {
-    components: { ProjectsList }
+    components: { HeaderApp, ProjectsList }
 }
 </script>

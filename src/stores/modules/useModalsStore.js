@@ -8,6 +8,9 @@ export const useModalsStore = defineStore('modals', {
         },
         domainModal: {
             isDomainModalShow: false
+        },
+        editBlocksModal: {
+            isEditBlocksModal: false
         }
     }),
 
@@ -22,6 +25,10 @@ export const useModalsStore = defineStore('modals', {
                     this.domainModal.isDomainModalShow = true
                     break
 
+                case 'editBlocksModal':
+                    this.editBlocksModal.isEditBlocksModal = true
+                    break
+
                 default:
                     break
             }
@@ -34,6 +41,10 @@ export const useModalsStore = defineStore('modals', {
                     break
                 case 'domainModal':
                     this.domainModal.isDomainModalShow = false
+                    break
+
+                case 'editBlocksModal':
+                    this.editBlocksModal.isEditBlocksModal = false
                     break
 
                 default:

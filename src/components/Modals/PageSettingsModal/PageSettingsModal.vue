@@ -1,27 +1,24 @@
 <template>
-    <AppModal
+    <ModalApp
         :modalType
         :isModalShow="settingsModal.isPageSettingsModalShow"
-        modalClass="modal--absolute"
+        modalClass="modal modal--absolute"
+        :withCross="true"
+        contentClass="page-settings-modal"
     >
-        <div class="page-settings-modal">
-            <h2 class="page-settings-modal__h2">Настройки страницы</h2>
-            <ul class="page-settings-modal__tabs">
-                <li
-                    v-for="(tab, index) in tabs"
-                    :key="index"
-                    class="page-settings__tab"
-                    :class="activeTabIndex === index ? 'page-settings-modal__tab--active' : ''"
-                >
-                    <button type="button" @click="changeActiveTab(index)">{{ tab }}</button>
-                </li>
-            </ul>
-
-            <form
-                v-if="activeTabIndex === 0"
-                class="page-settings-modal__content"
-                @submit.prevent="submitFormWithData"
+        <h2 class="page-settings-modal__h2">Настройки страницы</h2>
+        <ul class="page-settings-modal__tabs">
+            <li
+                v-for="(tab, index) in tabs"
+                :key="index"
+                class="page-settings__tab"
+                :class="activeTabIndex === index ? 'page-settings-modal__tab--active' : ''"
             >
+                <button type="button" @click="changeActiveTab(index)">{{ tab }}</button>
+            </li>
+        </ul>
+        <form action="" @submit.prevent="submitForm">
+            <div v-if="activeTabIndex === 0" class="page-settings-modal__content">
                 <label class="page-settings-modal__label">
                     Заголовок
                     <input type="text" class="page-settings-modal__input" v-model="title" />
@@ -40,31 +37,41 @@
                 >
                     Сохранить изменения
                 </button>
-            </form>
+            </div>
             <div v-else-if="activeTabIndex === 1" class="page-settings-modal__content">
-                <div v-if="!galeryVisible" class="page-settings-modal__img-container">
-                    <img class="background-img" :src="icon" alt="Beidge icon" />
+                <div v-if="!galeryVisible">
+                    <div class="page-settings-modal__img-container">
+                        <img class="background-img" :src="icon" alt="Beidge icon" />
+                        <button
+                            class="button-link page-settings-modal__open-unsplash-button"
+                            type="button"
+                            @click="galeryVisible = true"
+                        >
+                            Изменить бейдж
+                        </button>
+                    </div>
+
                     <button
-                        class="button-link page-settings-modal__open-unsplash-button"
-                        type="button"
-                        @click="galeryVisible = true"
+                        type="submit"
+                        class="button-link button-link--colored page-settings-modal__submit"
                     >
-                        Изменить бейдж
+                        Сохранить изменения
                     </button>
                 </div>
+
                 <UnsplashGalery v-else @submit-form="submitFormWithIcon" />
             </div>
-        </div>
-    </AppModal>
+        </form>
+    </ModalApp>
 </template>
 <script>
-import AppModal from '../../AppModal.vue'
+import ModalApp from '../../ModalApp.vue'
 import UnsplashGalery from './UnsplashGalery/UnsplashGalery.vue'
 import { useModalsStore, useProjectsStore } from '../../../stores'
 import { mapState, mapActions } from 'pinia'
 
 export default {
-    components: { AppModal, UnsplashGalery },
+    components: { ModalApp, UnsplashGalery },
     data() {
         return {
             projectId: +this.$route.params.projectId,
@@ -97,22 +104,25 @@ export default {
             }
         },
 
-        submitFormWithData() {
+        submitForm() {
             this.editPageData(this.projectId, this.settingsModal.pageNumber, {
                 title: this.title,
                 description: this.description,
-                url: this.url
+                url: this.url,
+                icon: this.icon
             })
             this.title = ''
             this.description = ''
             this.url = ''
             this.updatePageData()
+            this.hideModal(this.modalType)
         },
 
         submitFormWithIcon(icon) {
-            this.editPageIcon(this.projectId, this.settingsModal.pageNumber, icon.src)
-            this.updatePageData()
+            this.icon = icon.src
+            this.galeryVisible = false
         },
+
         changeActiveTab(newValue) {
             this.activeTabIndex = newValue
         }

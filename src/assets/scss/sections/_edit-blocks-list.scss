@@ -1,0 +1,12 @@
+.edit-blocks {
+}
+
+.edit-blocks-list__btn-add {
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.edit-blocks-list {
+    @include paddings();
+}

@@ -35,6 +35,38 @@
     }
 }
 
+.modal-left-50 {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 11;
+    width: 50vw;
+    height: 100vh;
+    background-color: $color-white;
+    border-radius: $border-radius;
+
+    @include respond-to(desktop) {
+        width: 70vw;
+    }
+
+    @include respond-to(laptop) {
+        width: 80vw;
+    }
+
+    @include respond-to(tablet) {
+        width: 100vw;
+    }
+}
+
+.modal--left-50 {
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 50vw;
+    height: 100vh;
+}
+
 .modal__close {
     position: absolute;
     right: 10px;
@@ -167,4 +199,115 @@
 
 .domain-modal__error {
     color: $color-error;
+}
+
+.edit-blocks-modal {
+    @include flex(row, flex-start, stretch);
+    height: 100%;
+
+    @include respond-to(mobile) {
+        flex-direction: column;
+        row-gap: 10px;
+    }
+}
+
+.edit-blocks-modal-library {
+    flex: 0 1 35%;
+    padding: 30px 20px;
+    background-color: $color-light;
+
+    @include respond-to(tablet) {
+        flex: 0 1 25%;
+    }
+
+    @include respond-to(mobile) {
+        flex: 0 0 auto;
+    }
+}
+
+.edit-blocks-modal-library__form {
+    position: relative;
+    @include flex(row, flex-start, stretch);
+    column-gap: 10px;
+    margin-bottom: 30px;
+
+    @include respond-to(tablet) {
+        flex-direction: column-reverse;
+        align-items: flex-end;
+        row-gap: 10px;
+    }
+}
+
+.edit-blocks-modal-library__buttons {
+    @include flex(row, flex-start, stretch);
+    column-gap: 10px;
+}
+
+.edit-blocks-modal-library__input {
+    padding: 10px 20px;
+    border: 1px solid $color-grey;
+    border-radius: $border-radius;
+    color: $color-black;
+
+    @include respond-to(mobile) {
+        width: 100%;
+    }
+}
+
+.edit-blocks-modal-library__input::placeholder {
+    color: $color-grey;
+}
+
+.edit-blocks-modal-library__item {
+    color: $color-black;
+
+    button {
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.edit-blocks-modal-library__item--active {
+    button {
+        color: $color-accent;
+    }
+}
+
+.edit-blocks-examples {
+    padding: 50px 20px;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+
+    @include respond-to(tablet) {
+        width: 100%;
+    }
+}
+
+.edit-blocks-examples__item {
+    padding-bottom: 10px;
+    border-bottom: 2px solid $color-grey;
+
+    button {
+        width: 100%;
+    }
+
+    &:not(:last-child) {
+        margin-bottom: 20px;
+    }
+}
+
+.edit-blocks-examples__h4 {
+    color: $color-black;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.edit-blocks-examples__p {
+    color: $color-grey;
+    text-align: center;
 }

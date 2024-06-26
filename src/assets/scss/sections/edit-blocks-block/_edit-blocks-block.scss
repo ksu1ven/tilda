@@ -1,0 +1,107 @@
+[contenteditable='true']:focus {
+    outline: none;
+    background-color: $color-light;
+}
+
+.edit-block-header {
+    &:not(:first-child) {
+        @include paddings();
+    }
+    &:first-child {
+        padding-bottom: $spacing-desktop;
+
+        @include respond-to(tablet) {
+            padding-bottom: $spacing-tablet;
+        }
+
+        @include respond-to(mobile) {
+            padding-bottom: $spacing-mobile;
+        }
+    }
+}
+
+.edit-block-header__h2 {
+    margin-bottom: 10px;
+    color: $color-accent;
+    font-size: 48px;
+
+    @include respond-to(tablet) {
+        font-size: 36px;
+    }
+
+    @include respond-to(mobile) {
+        font-size: 26px;
+    }
+}
+
+.edit-block-header__h4 {
+    margin-bottom: 10px;
+    color: $color-black;
+    font-size: 26px;
+
+    @include respond-to(laptop) {
+        font-size: 22px;
+    }
+
+    @include respond-to(mobile) {
+        font-size: 20px;
+    }
+}
+
+.edit-block-text {
+    margin-bottom: 10px;
+    color: $color-grey;
+    font-size: 26px;
+
+    @include respond-to(tablet) {
+        font-size: 22px;
+    }
+
+    @include respond-to(mobile) {
+        font-size: 18px;
+    }
+}
+
+.edit-block-img {
+    width: 100%;
+    aspect-ratio: 1.7777;
+    padding-top: 20px;
+    padding-bottom: 20px;
+    @include flex(column, center, center);
+    color: $color-white;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+
+    &__h2 {
+        margin-bottom: 30px;
+        font-size: 100px;
+        text-align: center;
+
+        @include respond-to(desktop) {
+            font-size: 64px;
+        }
+
+        @include respond-to(laptop) {
+            font-size: 48px;
+        }
+
+        @include respond-to(mobile) {
+            font-size: 26px;
+        }
+    }
+
+    &__p {
+        width: 60%;
+        font-size: 26px;
+        text-align: center;
+
+        @include respond-to(tablet) {
+            font-size: 22px;
+        }
+
+        @include respond-to(mobile) {
+            font-size: 18px;
+        }
+    }
+}

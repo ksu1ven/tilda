@@ -1,5 +1,5 @@
 <template>
-    <form class="unsplash-galery" @submit.prevent="submitForm">
+    <form class="unsplash-galery" @submit="submitForm">
         <div class="unsplash-galery__form">
             <input v-model="iconInputValue" type="text" class="unsplash-galery__input" />
             <div class="file-upload">
