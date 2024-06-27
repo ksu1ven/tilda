@@ -16,7 +16,7 @@
             <ProjectsListCard v-for="item in projects" :key="item.id" :item />
         </TransitionGroup>
     </ul>
-    <div class="projects-list--empty" v-else>Сайтов пока не добавлено :(</div>
+    <div class="projects-list--empty" v-else>Сайтов пока не добавлено</div>
 </template>
 
 <script>

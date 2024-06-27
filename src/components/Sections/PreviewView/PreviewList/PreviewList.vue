@@ -12,6 +12,7 @@
             :text="block.props.text"
             :h2="block.props.h2"
             :h4="block.props.h4"
+            :imageArr="block.props.imageArr"
             :contenteditable="false"
         />
     </div>
@@ -24,17 +25,21 @@
 
 <script>
 import pageIcon from '../../../../assets/images/cat.jpg'
+import pageIcon2 from '../../../../assets/images/cat 2.jpg'
+import pageIcon3 from '../../../../assets/images/cat 3.jpg'
 import { useProjectsStore } from '../../../../stores'
 import { mapState } from 'pinia'
 import HeaderBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/HeaderBlock.vue'
 import TextBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/TextBlock.vue'
 import ImgTextBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/ImgTextBlock.vue'
+import SliderBlock from './PreviewBlock/PreviewSliderBlock.vue'
 
 export default {
     components: {
         HeaderBlock,
         TextBlock,
-        ImgTextBlock
+        ImgTextBlock,
+        SliderBlock
     },
 
     data() {
@@ -78,6 +83,21 @@ export default {
                                 backgroundImage: `url(${block.icon || pageIcon})`,
                                 text: block.text,
                                 h2: block.h2
+                            }
+                        })
+                        break
+                    case 'block-slider':
+                        this.blocksComponentsList.push({
+                            component: 'SliderBlock',
+                            props: {
+                                imageArr: block.imageArr || [
+                                    pageIcon,
+                                    pageIcon2,
+                                    pageIcon3,
+                                    pageIcon,
+                                    pageIcon2,
+                                    pageIcon3
+                                ]
                             }
                         })
                         break

@@ -1,5 +1,5 @@
 <template>
-    <form class="unsplash-galery" @submit="submitForm">
+    <form class="unsplash-galery" @submit.prevent="submitForm">
         <div class="unsplash-galery__form">
             <input v-model="iconInputValue" type="text" class="unsplash-galery__input" />
             <div class="file-upload">
@@ -58,6 +58,12 @@
 export default {
     emits: ['submit-form'],
 
+    props: {
+        index: {
+            type: Number
+        }
+    },
+
     data() {
         return {
             iconInputValue: 'cat',
@@ -112,7 +118,7 @@ export default {
             }
         },
         submitForm() {
-            this.$emit('submit-form', this.selectedImg)
+            this.$emit('submit-form', this.selectedImg, this.index)
             this.resetSelectedImage()
         }
     },
