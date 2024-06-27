@@ -243,7 +243,7 @@
     }
 }
 
-.edit-block-slider__content {
+.edit-block-slider__content__list {
     @include flex(row, center, stretch);
     flex-wrap: wrap;
     gap: 20px;
