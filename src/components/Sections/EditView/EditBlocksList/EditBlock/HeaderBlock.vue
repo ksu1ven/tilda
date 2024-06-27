@@ -1,23 +1,23 @@
 <template>
     <div class="edit-block-header">
-        <BlockWrapper :index />
+        <BlockWrapper v-if="contenteditable" :index />
         <h2
             class="edit-block-header__h2"
-            contenteditable="true"
+            :contenteditable
             @input="changeH2($event.target.textContent)"
         >
             {{ h2 }}
         </h2>
         <h4
             class="edit-block-header__h4"
-            contenteditable="true"
+            :contenteditable
             @input="changeH4($event.target.textContent)"
         >
             {{ h4 }}
         </h4>
         <div
             class="edit-block-header__text"
-            contenteditable="true"
+            :contenteditable
             @input="changeText($event.target.textContent)"
         >
             {{ text }}
@@ -48,6 +48,10 @@ export default {
             type: String,
             default:
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, nesciunt quae aliquid nisi tenetur ratione asperiores reprehenderit placeat reiciendis aspernatur quas id velit totam dicta, fugit ex nam, minima veniam.'
+        },
+        contenteditable: {
+            type: Boolean,
+            required: true
         }
     },
     data() {

@@ -1,67 +1,24 @@
 import { defineStore } from 'pinia'
+import { projectsDefault } from '@/data/projectsDefault'
 import pageIcon from '../../assets/images/cat.jpg'
 
 export const useProjectsStore = defineStore('projects', {
     state: () => ({
-        projects: [
-            {
-                id: 1,
-                pages: [
-                    {
-                        id: 1,
-                        title: 'Page 1',
-                        description: 'Тестовое описание',
-                        url: 'Тестовый адрес',
-                        icon: pageIcon,
-                        content: []
-                    }
-                ]
-            },
-            {
-                id: 2,
-                pages: [
-                    {
-                        id: 1,
-                        title: 'Page 1',
-                        description: 'Тестовое описание',
-                        url: 'Тестовый адрес',
-                        icon: pageIcon,
-                        content: []
-                    }
-                ]
-            },
-            {
-                id: 3,
-                pages: [
-                    {
-                        id: 1,
-                        title: 'Page 1',
-                        description: 'Тестовое описание',
-                        url: 'Тестовый адрес',
-                        icon: pageIcon,
-                        content: []
-                    }
-                ]
-            },
-            {
-                id: 4,
-                pages: [
-                    {
-                        id: 1,
-                        title: 'Page 1',
-                        description: 'Тестовое описание',
-                        url: 'Тестовый адрес',
-                        icon: pageIcon,
-                        content: []
-                    }
-                ]
-            }
-        ],
+        projects: JSON.parse(localStorage.getItem('projects')) ?? projectsDefault,
         emitsCounter: 0
     }),
     getters: {
-        getProjectById: (state) => (id) => {
+        getProjectById: (state) => (projectId) => {
+            return state.projects.find((project) => project.id === projectId)
+        },
+        getProjectPagesById: (state) => (id) => {
             return state.projects.find((project) => project.id === id)?.pages
+        },
+        getPageData: (state) => (projectId, pageId) => {
+            const project = state.getProjectById(projectId)
+            if (project) {
+                return project.pages.find((p) => p.id === pageId)
+            }
         },
         getPageContent: (state) => (projectId, pageId) => {
             const project = state.projects.find((project) => project.id === projectId)
@@ -75,6 +32,9 @@ export const useProjectsStore = defineStore('projects', {
     actions: {
         updateEmitsCounter() {
             this.emitsCounter += 1
+        },
+        updateLocalStorageProjects() {
+            localStorage.setItem('projects', JSON.stringify(this.projects))
         },
         addProject() {
             const newId = this.projects?.at(-1)?.id + 1 || 1
@@ -91,40 +51,38 @@ export const useProjectsStore = defineStore('projects', {
                     }
                 ]
             })
+            this.updateLocalStorageProjects()
         },
         removeProject(id) {
             this.projects = this.projects.filter((project) => project.id !== id)
+            this.updateLocalStorageProjects()
         },
-        findProjectById(projectId) {
-            return this.projects.find((project) => project.id === projectId)
-        },
+
         addPageToProject(projectId) {
-            const project = this.findProjectById(projectId)
+            const project = this.getProjectById(projectId)
             if (project) {
+                const id = project.pages?.at(-1)?.id + 1 || 1
                 project.pages.push({
-                    id: project.pages?.at(-1)?.id + 1 || 1,
-                    title: `Page ${project.pages?.at(-1)?.id + 1 || 1}`,
+                    id,
+                    title: `Page ${id}`,
                     description: 'Тестовое описание',
                     url: 'Тестовый адрес',
                     icon: pageIcon,
                     content: []
                 })
+                this.updateLocalStorageProjects()
             }
         },
         removePageFromProject(projectId, pageId) {
-            const project = this.findProjectById(projectId)
+            const project = this.getProjectById(projectId)
             if (project) {
                 project.pages = project.pages.filter((p) => p.id !== pageId)
+                this.updateLocalStorageProjects()
             }
         },
-        getPageData(projectId, pageId) {
-            const project = this.findProjectById(projectId)
-            if (project) {
-                return project.pages.find((p) => p.id === pageId)
-            }
-        },
+
         editPageData(projectId, pageId, newData) {
-            const project = this.findProjectById(projectId)
+            const project = this.getProjectById(projectId)
             if (project) {
                 const page = project.pages.find((p) => p.id === pageId)
                 const { title, description, url, icon } = newData
@@ -132,26 +90,29 @@ export const useProjectsStore = defineStore('projects', {
                 page.description = description
                 page.url = url
                 page.icon = icon
+                this.updateLocalStorageProjects()
             }
         },
 
         addPageContent(projectId, pageId, newContent) {
-            const project = this.findProjectById(projectId)
+            const project = this.getProjectById(projectId)
             if (project) {
                 const page = project.pages.find((p) => p.id === pageId)
                 page.content.push(newContent)
+                this.updateLocalStorageProjects()
             }
         },
 
         editPageContent(projectId, pageId, contentIndex, newContent) {
-            const project = this.findProjectById(projectId)
+            const project = this.getProjectById(projectId)
             if (project) {
                 const page = project.pages.find((p) => p.id === pageId)
                 page.content[contentIndex] = { ...page.content[contentIndex], ...newContent }
+                this.updateLocalStorageProjects()
             }
         },
         manipulateWithBlocks(projectId, pageId, contentIndex, action) {
-            const project = this.findProjectById(projectId)
+            const project = this.getProjectById(projectId)
             if (project) {
                 const page = project.pages.find((p) => p.id === pageId)
                 let contentItem = { ...page.content[contentIndex] }
@@ -181,6 +142,7 @@ export const useProjectsStore = defineStore('projects', {
                             break
                     }
                 }
+                this.updateLocalStorageProjects()
             }
         }
     }

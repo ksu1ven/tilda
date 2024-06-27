@@ -1,10 +1,6 @@
 <template>
-    <div
-        class="edit-block-text"
-        contenteditable="true"
-        @input="changeText($event.target.textContent)"
-    >
-        <BlockWrapper :index />
+    <div class="edit-block-text" :contenteditable @input="changeText($event.target.textContent)">
+        <BlockWrapper v-if="contenteditable" :index />
         {{ text }}
     </div>
 </template>
@@ -24,6 +20,10 @@ export default {
             type: String,
             default:
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsam, nesciunt quae aliquid nisi tenetur ratione asperiores reprehenderit placeat reiciendis aspernatur quas id velit totam dicta, fugit ex nam, minima veniam.'
+        },
+        contenteditable: {
+            type: Boolean,
+            required: true
         }
     },
     data() {

@@ -14,6 +14,8 @@
 @import './views/projects-home-view';
 @import './views/project-view';
 @import './views/edit-view';
+@import './views/preview-view';
+@import './views/profile-view';
 
 @import './sections/projects-list';
 @import './sections/projects-list-card/projects-list-card';
@@ -22,6 +24,7 @@
 @import './sections/pages-list-card/pages-list-card';
 @import './sections/edit-blocks-list';
 @import './sections/edit-blocks-block/edit-blocks-block';
+@import './sections/profile-form';
 
 body {
     min-height: 100vh;

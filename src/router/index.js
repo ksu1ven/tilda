@@ -1,6 +1,7 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import ProjectsMainView from '../views/ProjectsMainView.vue'
 import ProfileView from '../views/ProfileView.vue'
+import { getCookie } from '../helpers/getSetCookie'
 
 const router = createRouter({
     history: createWebHistory(import.meta.env.BASE_URL),
@@ -26,11 +27,26 @@ const router = createRouter({
             component: () => import('../views/PreviewView.vue')
         },
         {
-            path: '/profile',
+            path: '/login',
             name: 'ProfileView',
             component: ProfileView
         }
     ]
+})
+
+router.beforeEach(async (to) => {
+    const token = getCookie('token')
+    let expires = getCookie('expires')
+    if (expires) expires = Date.parse(decodeURIComponent(expires))
+
+    if (
+        (!token && to.name !== 'ProfileView') ||
+        (token && expires < Date.now() && to.name !== 'ProfileView')
+    ) {
+        return { name: 'ProfileView' }
+    } else if (token && to.name === 'ProfileView' && expires > Date.now()) {
+        return { name: 'ProjectHomeView' }
+    }
 })
 
 export default router

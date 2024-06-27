@@ -86,12 +86,12 @@ export default {
         }
     },
     computed: {
-        ...mapState(useModalsStore, ['settingsModal'])
+        ...mapState(useModalsStore, ['settingsModal']),
+        ...mapState(useProjectsStore, ['getPageData'])
     },
 
     methods: {
         ...mapActions(useModalsStore, ['hideModal']),
-        ...mapActions(useProjectsStore, ['getPageData']),
         ...mapActions(useProjectsStore, ['editPageData', 'editPageIcon']),
 
         updatePageData() {
@@ -129,6 +129,9 @@ export default {
         }
     },
     mounted() {
+        this.updatePageData()
+    },
+    updated() {
         this.updatePageData()
     },
     watch: {

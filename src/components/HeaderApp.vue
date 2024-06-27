@@ -12,12 +12,14 @@
                     </li>
                     <li><RouterLink to="/" class="header__link"> Мои сайты </RouterLink></li>
                     <li>
-                        <RouterLink to="/profile" class="header__link"> Профиль </RouterLink>
+                        <RouterLink to="/login" class="header__link"> Профиль </RouterLink>
                     </li>
                 </ul>
             </nav>
             <div class="header-right-block">
-                <button type="button" class="button-link header__link">Выйти</button>
+                <button type="button" class="button-link header__link" @click="exitProfile">
+                    Выйти
+                </button>
                 <div v-if="withOptions" class="header-options">
                     <RouterLink
                         :to="{ name: 'PreviewView', params: { projectId, pageId } }"
@@ -37,7 +39,7 @@
                             Настройки страницы
                         </button>
                         <RouterLink to="/" class="button-link"> Мой сайты</RouterLink>
-                        <RouterLink to="/profile" class="button-link"> Профиль</RouterLink>
+                        <RouterLink to="/login" class="button-link"> Профиль</RouterLink>
                     </div>
                 </div>
             </div>
@@ -47,7 +49,7 @@
 
 <script>
 import { mapActions } from 'pinia'
-import { useModalsStore } from '../stores'
+import { useModalsStore, useAuthStore } from '../stores'
 export default {
     props: {
         withOptions: {
@@ -63,9 +65,14 @@ export default {
     },
     methods: {
         ...mapActions(useModalsStore, ['showModal']),
+        ...mapActions(useAuthStore, ['removeToken']),
         openModal() {
             this.isDropdownVisible = false
             this.showModal('pageSettings', { pageNumber: this.pageId })
+        },
+        exitProfile() {
+            this.removeToken()
+            this.$router.push({ path: '/login' })
         }
     }
 }

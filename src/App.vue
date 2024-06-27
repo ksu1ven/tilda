@@ -19,10 +19,10 @@ export default {
         return {
             isErrorCaptured: false
         }
-    },
-    errorCaptured(err) {
-        if (err) this.isErrorCaptured = true
-        return false
     }
+    // errorCaptured(err) {
+    //     if (err) this.isErrorCaptured = true
+    //     return false
+    // }
 }
 </script>

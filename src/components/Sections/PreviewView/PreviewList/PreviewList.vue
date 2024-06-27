@@ -1,39 +1,34 @@
 <template>
-    <div class="edit-blocks">
-        <button
-            v-if="!blocksComponentsList.length"
-            type="button"
-            class="button-link button-link--colored edit-blocks-list__btn-add"
-            @click="showModal('editBlocksModal')"
-        >
-            Добавить запись
-        </button>
-        <div class="edit-blocks-list">
-            <Component
-                v-for="(block, index) in blocksComponentsList"
-                :is="block.component"
-                :style="{
-                    textAlign: block.props.textAlign,
-                    backgroundImage: block.props.backgroundImage
-                }"
-                :key="index"
-                :index
-                :text="block.props.text"
-                :h2="block.props.h2"
-                :h4="block.props.h4"
-                :contenteditable="true"
-            />
-        </div>
+    <div class="preview-blocks-list">
+        <Component
+            v-for="(block, index) in blocksComponentsList"
+            :is="block.component"
+            :style="{
+                textAlign: block.props.textAlign,
+                backgroundImage: block.props.backgroundImage
+            }"
+            :key="index"
+            :index
+            :text="block.props.text"
+            :h2="block.props.h2"
+            :h4="block.props.h4"
+            :contenteditable="false"
+        />
     </div>
+    <RouterLink
+        :to="{ name: 'EditView', params: { projectId, pageId } }"
+        class="button-link button-link--colored preview-blocks-list__link"
+        >Вернуться к редактированию</RouterLink
+    >
 </template>
 
 <script>
 import pageIcon from '../../../../assets/images/cat.jpg'
-import { useModalsStore, useProjectsStore } from '../../../../stores'
-import { mapState, mapActions } from 'pinia'
-import HeaderBlock from './EditBlock/HeaderBlock.vue'
-import TextBlock from './EditBlock/TextBlock.vue'
-import ImgTextBlock from './EditBlock/ImgTextBlock.vue'
+import { useProjectsStore } from '../../../../stores'
+import { mapState } from 'pinia'
+import HeaderBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/HeaderBlock.vue'
+import TextBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/TextBlock.vue'
+import ImgTextBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/ImgTextBlock.vue'
 
 export default {
     components: {
@@ -51,19 +46,13 @@ export default {
         }
     },
     computed: {
-        ...mapState(useProjectsStore, ['getPageContent', 'emitsCounter']),
-
-        selectedBlockExamples() {
-            return this.blocks[this.activeBlockIndex].variants
-        }
+        ...mapState(useProjectsStore, ['getPageContent'])
     },
 
-    methods: {
-        ...mapActions(useModalsStore, ['showModal']),
-
-        updateBlockComponentsList(blocksList) {
-            this.blocksComponentsList = []
-            blocksList.forEach((block) => {
+    mounted() {
+        this.blocksList = this.getPageContent(this.projectId, this.pageId)
+        if (this.blocksList) {
+            this.blocksList.forEach((block) => {
                 switch (block.type) {
                     case 'block-text':
                         this.blocksComponentsList.push({
@@ -94,14 +83,6 @@ export default {
                         break
                 }
             })
-        }
-    },
-    watch: {
-        emitsCounter: {
-            handler() {
-                this.updateBlockComponentsList(this.getPageContent(this.projectId, this.pageId))
-            },
-            immediate: true
         }
     }
 }

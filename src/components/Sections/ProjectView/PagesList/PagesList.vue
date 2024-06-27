@@ -65,14 +65,14 @@ export default {
     },
 
     computed: {
-        ...mapState(useProjectsStore, ['getProjectById']),
+        ...mapState(useProjectsStore, ['getProjectPagesById']),
 
         projectRoute() {
             return `${window.location.origin}/project/${this.projectId}`
         },
 
         pages() {
-            return this.getProjectById(this.projectId)
+            return this.getProjectPagesById(this.projectId)
         }
     },
     methods: {
