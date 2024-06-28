@@ -21,6 +21,9 @@
                     Выйти
                 </button>
                 <div v-if="withOptions" class="header-options">
+                    <button type="button" class="header__link" @click="handleRevertEditingAction">
+                        Отменить
+                    </button>
                     <RouterLink
                         :to="{ name: 'PreviewView', params: { projectId, pageId } }"
                         class="header__link"
