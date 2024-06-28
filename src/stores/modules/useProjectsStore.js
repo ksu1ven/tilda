@@ -23,7 +23,7 @@ export const useProjectsStore = defineStore('projects', {
             const project = state.projects.find((project) => project.id === projectId)
             if (project) {
                 const page = project.pages.find((p) => p.id === pageId)
-                return page.content
+                return page?.content
             }
         }
     },
@@ -99,6 +99,7 @@ export const useProjectsStore = defineStore('projects', {
                 const page = project.pages.find((p) => p.id === pageId)
                 page.content.push(newContent)
                 this.updateLocalStorageProjects()
+                this.updateEmitsCounter()
             }
         },
 
@@ -110,6 +111,7 @@ export const useProjectsStore = defineStore('projects', {
                 this.updateLocalStorageProjects()
             }
         },
+
         manipulateWithBlocks(projectId, pageId, contentIndex, action) {
             const project = this.getProjectById(projectId)
             if (project) {
@@ -134,7 +136,7 @@ export const useProjectsStore = defineStore('projects', {
                             break
 
                         case 'copy':
-                            page.content = page.content.concat(contentItem)
+                            page.content.splice(contentIndex, 0, contentItem)
                             break
 
                         default:

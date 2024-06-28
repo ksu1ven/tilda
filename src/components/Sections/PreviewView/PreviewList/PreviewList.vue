@@ -12,7 +12,7 @@
             :text="block.props.text"
             :h2="block.props.h2"
             :h4="block.props.h4"
-            :imageArr="block.props.imageArr"
+            :image-arr="block.props.imageArr"
             :contenteditable="false"
         />
     </div>

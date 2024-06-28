@@ -97,7 +97,6 @@ export default {
         addNewBlock(type, textAlign) {
             let content = { type, textAlign }
             this.addPageContent(this.projectId, this.pageId, content)
-            this.updateEmitsCounter()
         }
     }
 }

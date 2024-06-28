@@ -1,39 +1,6 @@
 <template>
     <div class="preview-block-slider">
-        <swiper
-            :modules="modules"
-            :breakpoints="{
-                '320': {
-                    slidesPerView: 1,
-                    spaceBetween: 20
-                },
-                '577': {
-                    slidesPerView: 2,
-                    spaceBetween: 40
-                },
-                '992': {
-                    slidesPerView: 3,
-                    spaceBetween: 50
-                }
-            }"
-            :space-between="50"
-            :navigation="{
-                nextEl: '.swiper-button-next',
-                prevEl: '.swiper-button-prev'
-            }"
-            :pagination="{
-                el: '.swiper-pagination',
-                clickable: true
-            }"
-            effect="coverflow"
-            :coverflowEffect="{
-                rotate: 40,
-                stretch: 0,
-                depth: 100,
-                modifier: 1,
-                slideShadows: false
-            }"
-        >
+        <swiper v-bind="swiperOptions">
             <swiper-slide v-for="(image, index) in imageArr" :key="index">
                 <div class="preview-block-slider__img-container">
                     <img :src="image" alt="Slide" class="background-img" />
@@ -49,8 +16,8 @@
 </template>
 
 <script>
+import { swiperOptions } from '@/data/swiperOptions'
 import { Swiper, SwiperSlide } from 'swiper/vue'
-import { Navigation, Pagination, A11y, EffectCoverflow } from 'swiper/modules'
 
 import 'swiper/css'
 import 'swiper/css/navigation'
@@ -62,11 +29,7 @@ export default {
         Swiper,
         SwiperSlide
     },
-    setup() {
-        return {
-            modules: [Navigation, Pagination, EffectCoverflow, A11y]
-        }
-    },
+
     props: {
         index: {
             type: Number,
@@ -79,6 +42,11 @@ export default {
         imageArr: {
             type: Array,
             required: true
+        }
+    },
+    data() {
+        return {
+            swiperOptions
         }
     }
 }
