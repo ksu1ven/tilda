@@ -143,6 +143,20 @@ export const useProjectsStore = defineStore('projects', {
                 }
                 this.updateLocalStorageProjects()
             }
+        },
+        insertRevertedPageContent(projectId, pageId, revertedContent) {
+            const project = this.getProjectById(projectId)
+            if (project) {
+                const page = project.pages.find((p) => p.id === pageId)
+                if (page) {
+                    console.log(['insertRevertedPageContent', revertedContent])
+                    if (revertedContent) {
+                        page.content = JSON.parse(revertedContent)
+                    }
+
+                    this.updateLocalStorageProjects()
+                }
+            }
         }
     }
 })

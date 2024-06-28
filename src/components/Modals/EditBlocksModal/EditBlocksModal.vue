@@ -105,8 +105,9 @@ export default {
             this.addPageContent(this.projectId, this.pageId, content)
             this.updateEmitsCounter()
 
-            // const updatetPageState = this.getPageContent(this.projectId, this.pageId)
-            // this.saveChanges(this.projectId, this.pageId, updatetPageState )
+            const updatedPageState = this.getPageContent(this.projectId, this.pageId)
+            // console.log(['updatedPageState', updatedPageState]); OK
+            this.saveChanges(this.projectId, this.pageId, updatedPageState)
         }
     }
 }

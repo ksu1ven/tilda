@@ -52,7 +52,7 @@
 
 <script>
 import { mapActions } from 'pinia'
-import { useModalsStore, useAuthStore } from '../stores'
+import { useModalsStore, useAuthStore, useEditingRevertStore, useProjectsStore } from '../stores'
 export default {
     props: {
         withOptions: {
@@ -69,6 +69,8 @@ export default {
     methods: {
         ...mapActions(useModalsStore, ['showModal']),
         ...mapActions(useAuthStore, ['removeToken']),
+        ...mapActions(useProjectsStore, ['insertRevertedPageContent']),
+        ...mapActions(useEditingRevertStore, ['getRevertedContent']),
         openModal() {
             this.isDropdownVisible = false
             this.showModal('pageSettings', { pageNumber: this.pageId })
@@ -76,6 +78,11 @@ export default {
         exitProfile() {
             this.removeToken()
             this.$router.push({ path: '/login' })
+        },
+        handleRevertEditingAction() {
+            const revertedContent = this.getRevertedContent(this.projectId, this.pageId)
+            console.log(['handleRevertEditingAction', revertedContent])
+            this.insertRevertedPageContent(this.projectId, this.pageId, revertedContent)
         }
     }
 }
