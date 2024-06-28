@@ -152,9 +152,9 @@ export const useProjectsStore = defineStore('projects', {
                     console.log(['insertRevertedPageContent', revertedContent])
                     if (revertedContent) {
                         page.content = JSON.parse(revertedContent)
+                        this.emitsCounter--
+                        this.updateLocalStorageProjects()
                     }
-
-                    this.updateLocalStorageProjects()
                 }
             }
         }
