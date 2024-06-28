@@ -106,7 +106,6 @@ export default {
             this.updateEmitsCounter()
 
             const updatedPageState = this.getPageContent(this.projectId, this.pageId)
-            // console.log(['updatedPageState', updatedPageState]); OK
             this.saveChanges(this.projectId, this.pageId, updatedPageState)
         }
     }

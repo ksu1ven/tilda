@@ -35,13 +35,15 @@ import HeaderBlock from './EditBlock/HeaderBlock.vue'
 import TextBlock from './EditBlock/TextBlock.vue'
 import ImgTextBlock from './EditBlock/ImgTextBlock.vue'
 import SliderBlock from './EditBlock/SliderBlock.vue'
+import YoutubeBlock from './EditBlock/YoutubeBlock.vue'
 
 export default {
     components: {
         HeaderBlock,
         TextBlock,
         ImgTextBlock,
-        SliderBlock
+        SliderBlock,
+        YoutubeBlock
     },
 
     data() {
@@ -107,6 +109,11 @@ export default {
                                     '/src/assets/images/cat 3.jpg'
                                 ]
                             }
+                        })
+                    case 'youtube':
+                        this.blocksComponentsList.push({
+                            component: 'YoutubeBlock',
+                            props: {}
                         })
                         break
                 }

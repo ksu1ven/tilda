@@ -53,6 +53,16 @@ export const useBlocksStore = defineStore('blocks', {
                             'Слайдер из нескольких изображений, которые можно листать стрелками, кнопками пагинации и мышью. Количество изображений можно менять'
                     }
                 ]
+            },
+            {
+                title: 'Youtube видео',
+                variants: [
+                    {
+                        type: 'youtube',
+                        title: 'Встроенное видео c Youtube',
+                        alignTitle: 'Встрой видео с Youtube по прямой ссылке.'
+                    }
+                ]
             }
         ]
     })
