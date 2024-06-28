@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import { useModalsStore, useProjectsStore } from '../../../../stores'
+import { useModalsStore, useProjectsStore, useEditingRevertStore } from '../../../../stores'
 import { mapState, mapActions } from 'pinia'
 import HeaderBlock from './EditBlock/HeaderBlock.vue'
 import TextBlock from './EditBlock/TextBlock.vue'
@@ -62,7 +62,7 @@ export default {
 
     methods: {
         ...mapActions(useModalsStore, ['showModal']),
-
+        ...mapActions(useEditingRevertStore, ['saveChanges']),
         updateBlockComponentsList(blocksList) {
             this.blocksComponentsList = []
             blocksList.forEach((block) => {
@@ -116,7 +116,9 @@ export default {
     watch: {
         emitsCounter: {
             handler() {
-                this.updateBlockComponentsList(this.getPageContent(this.projectId, this.pageId))
+                const pageContent = this.getPageContent(this.projectId, this.pageId)
+                this.updateBlockComponentsList(pageContent)
+                this.saveChanges(this.projectId, this.pageId, pageContent)
             },
             immediate: true
         }

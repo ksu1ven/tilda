@@ -67,7 +67,12 @@
 
 <script>
 import ModalApp from '../../ModalApp.vue'
-import { useModalsStore, useBlocksStore, useProjectsStore } from '../../../stores'
+import {
+    useModalsStore,
+    useBlocksStore,
+    useProjectsStore,
+    useEditingRevertStore
+} from '../../../stores'
 import { mapState, mapActions } from 'pinia'
 
 export default {
@@ -92,12 +97,16 @@ export default {
 
     methods: {
         ...mapActions(useModalsStore, ['hideModal']),
-        ...mapActions(useProjectsStore, ['addPageContent', 'updateEmitsCounter']),
+        ...mapActions(useProjectsStore, ['addPageContent', 'updateEmitsCounter', 'getPageContent']),
+        ...mapActions(useEditingRevertStore, ['saveChanges']),
 
         addNewBlock(type, textAlign) {
             let content = { type, textAlign }
             this.addPageContent(this.projectId, this.pageId, content)
             this.updateEmitsCounter()
+
+            // const updatetPageState = this.getPageContent(this.projectId, this.pageId)
+            // this.saveChanges(this.projectId, this.pageId, updatetPageState )
         }
     }
 }

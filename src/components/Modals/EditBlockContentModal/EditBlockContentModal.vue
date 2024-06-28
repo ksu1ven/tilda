@@ -117,7 +117,7 @@
 
 <script>
 import ModalApp from '../../ModalApp.vue'
-import { useModalsStore, useProjectsStore } from '../../../stores'
+import { useModalsStore, useProjectsStore, useEditingRevertStore } from '../../../stores'
 import UnsplashGalery from '../PageSettingsModal/UnsplashGalery/UnsplashGalery.vue'
 import { mapState, mapActions } from 'pinia'
 
@@ -150,6 +150,7 @@ export default {
     methods: {
         ...mapActions(useModalsStore, ['hideModal']),
         ...mapActions(useProjectsStore, ['editPageContent', 'updateEmitsCounter']),
+        ...mapActions(useEditingRevertStore, ['saveChanges']),
 
         addSlide() {
             let copy = [...this.imageArr]
@@ -214,6 +215,8 @@ export default {
                 '/src/assets/images/cat 3.jpg'
             ]
         }
+
+        this.saveChanges(this.projectId, this.pageId, pageContent)
     }
 }
 </script>
