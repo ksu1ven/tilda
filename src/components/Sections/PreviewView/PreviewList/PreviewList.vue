@@ -30,13 +30,16 @@ import HeaderBlock from '@/components/Sections/EditContentView/EditBlocksList/Ed
 import TextBlock from '@/components/Sections/EditContentView/EditBlocksList/EditBlock/TextBlock.vue'
 import ImgTextBlock from '@/components/Sections/EditContentView/EditBlocksList/EditBlock/ImgTextBlock.vue'
 import SliderBlock from './PreviewBlock/PreviewSliderBlock.vue'
-
+import YoutubeBlock from '@/components/Sections/EditContentView/EditBlocksList/EditBlock/YoutubeBlock.vue'
+import VimeoBlock from '@/components/Sections/EditContentView/EditBlocksList/EditBlock/YoutubeBlock.vue'
 export default {
     components: {
         HeaderBlock,
         TextBlock,
         ImgTextBlock,
-        SliderBlock
+        SliderBlock,
+        YoutubeBlock,
+        VimeoBlock
     },
 
     data() {
@@ -96,6 +99,18 @@ export default {
                                     '/src/assets/images/cat 3.jpg'
                                 ]
                             }
+                        })
+                        break
+                    case 'youtube':
+                        this.blocksComponentsList.push({
+                            component: 'YoutubeBlock',
+                            props: {}
+                        })
+                        break
+                    case 'vimeo':
+                        this.blocksComponentsList.push({
+                            component: 'VimeoBlock',
+                            props: {}
                         })
                         break
                 }
