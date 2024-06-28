@@ -63,6 +63,16 @@ export const useBlocksStore = defineStore('blocks', {
                         alignTitle: 'Встрой видео с Youtube по прямой ссылке.'
                     }
                 ]
+            },
+            {
+                title: 'Vimeo видео',
+                variants: [
+                    {
+                        type: 'vimeo',
+                        title: 'Встроенное видео c Vimeo',
+                        alignTitle: 'Встрой видео с Vimeo по прямой ссылке.'
+                    }
+                ]
             }
         ]
     })

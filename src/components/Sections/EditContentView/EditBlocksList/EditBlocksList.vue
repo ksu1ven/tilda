@@ -36,6 +36,7 @@ import TextBlock from './EditBlock/TextBlock.vue'
 import ImgTextBlock from './EditBlock/ImgTextBlock.vue'
 import SliderBlock from './EditBlock/SliderBlock.vue'
 import YoutubeBlock from './EditBlock/YoutubeBlock.vue'
+import VimeoBlock from './EditBlock/VimeoBlock.vue'
 
 export default {
     components: {
@@ -43,7 +44,8 @@ export default {
         TextBlock,
         ImgTextBlock,
         SliderBlock,
-        YoutubeBlock
+        YoutubeBlock,
+        VimeoBlock
     },
 
     data() {
@@ -110,9 +112,16 @@ export default {
                                 ]
                             }
                         })
+                        break
                     case 'youtube':
                         this.blocksComponentsList.push({
                             component: 'YoutubeBlock',
+                            props: {}
+                        })
+                        break
+                    case 'vimeo':
+                        this.blocksComponentsList.push({
+                            component: 'VimeoBlock',
                             props: {}
                         })
                         break

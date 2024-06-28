@@ -10,12 +10,3 @@
         allowfullscreen
     ></iframe>
 </template>
-
-<script>
-import { useProjectsStore, useModalsStore } from '../../../../../stores'
-import { mapActions } from 'pinia'
-
-export default {
-    computed: {}
-}
-</script>
