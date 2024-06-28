@@ -120,9 +120,7 @@ import ModalApp from '../../ModalApp.vue'
 import { useModalsStore, useProjectsStore } from '../../../stores'
 import UnsplashGalery from '../PageSettingsModal/UnsplashGalery/UnsplashGalery.vue'
 import { mapState, mapActions } from 'pinia'
-import pageIcon from '../../../assets/images/cat.jpg'
-import pageIcon2 from '../../../assets/images/cat 2.jpg'
-import pageIcon3 from '../../../assets/images/cat 3.jpg'
+
 export default {
     components: { ModalApp, UnsplashGalery },
 
@@ -155,7 +153,7 @@ export default {
 
         addSlide() {
             let copy = [...this.imageArr]
-            copy.push(pageIcon)
+            copy.push('/src/assets/images/cat.jpg')
             this.imageArr = copy
         },
 
@@ -206,14 +204,14 @@ export default {
             this.h2 = pageContent.h2 || ''
             this.h4 = pageContent.h4 || ''
             this.text = pageContent.text || ''
-            this.icon = pageContent.icon || pageIcon
+            this.icon = pageContent.icon || '/src/assets/images/cat.jpg'
             this.imageArr = pageContent.imageArr || [
-                pageIcon,
-                pageIcon2,
-                pageIcon3,
-                pageIcon,
-                pageIcon2,
-                pageIcon3
+                '/src/assets/images/cat.jpg',
+                '/src/assets/images/cat 2.jpg',
+                '/src/assets/images/cat 3.jpg',
+                '/src/assets/images/cat.jpg',
+                '/src/assets/images/cat 2.jpg',
+                '/src/assets/images/cat 3.jpg'
             ]
         }
     }

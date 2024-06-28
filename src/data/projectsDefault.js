@@ -1,5 +1,3 @@
-import pageIcon from '../assets/images/cat.jpg'
-
 export const projectsDefault = [
     {
         id: 1,
@@ -9,7 +7,7 @@ export const projectsDefault = [
                 title: 'Page 1',
                 description: 'Тестовое описание',
                 url: 'Тестовый адрес',
-                icon: pageIcon,
+                icon: '/src/assets/images/cat.jpg',
                 content: []
             }
         ]
@@ -22,7 +20,7 @@ export const projectsDefault = [
                 title: 'Page 1',
                 description: 'Тестовое описание',
                 url: 'Тестовый адрес',
-                icon: pageIcon,
+                icon: '/src/assets/images/cat.jpg',
                 content: []
             }
         ]
@@ -35,7 +33,7 @@ export const projectsDefault = [
                 title: 'Page 1',
                 description: 'Тестовое описание',
                 url: 'Тестовый адрес',
-                icon: pageIcon,
+                icon: '/src/assets/images/cat.jpg',
                 content: []
             }
         ]
@@ -48,7 +46,7 @@ export const projectsDefault = [
                 title: 'Page 1',
                 description: 'Тестовое описание',
                 url: 'Тестовый адрес',
-                icon: pageIcon,
+                icon: '/src/assets/images/cat.jpg',
                 content: []
             }
         ]

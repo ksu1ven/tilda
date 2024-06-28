@@ -22,7 +22,7 @@
         <hr />
         <div class="projects-list-card__footer">
             <RouterLink
-                :to="{ name: 'EditView', params: { projectId: item.id, pageId: 1 } }"
+                :to="{ name: 'ProjectView', params: { projectId: item.id } }"
                 class="button-link button-link--with-icon"
                 type="button"
             >
@@ -53,7 +53,6 @@ export default {
         ProjectsListCardOptions
     },
 
-    // emits: ['edit-title'],
     props: {
         item: {
             type: Object,
@@ -65,11 +64,6 @@ export default {
             isOptionsVisible: false,
             excludeElement: null
         }
-    },
-    methods: {
-        // editTitle(newTitleValue) {
-        //     this.$emit('edit-title', this.index, newTitleValue)
-        // }
     },
 
     mounted() {

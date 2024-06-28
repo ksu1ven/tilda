@@ -1,12 +1,12 @@
 <template>
     <li class="pages-list-card">
         <div class="pages-list-card__data">
-            <RouterLink :to="{ name: 'EditView', params: { projectId, pageId: page.id } }">
+            <RouterLink :to="{ name: 'EditContentView', params: { projectId, pageId: page.id } }">
                 <div class="pages-list-card__img-container">
                     <img class="background-img" :src="page.icon" alt="Page icon" />
                 </div>
             </RouterLink>
-            <RouterLink :to="{ name: 'EditView', params: { projectId, pageId: page.id } }">
+            <RouterLink :to="{ name: 'EditContentView', params: { projectId, pageId: page.id } }">
                 <h3 class="pages-list-card__h3">{{ page.title }}</h3>
                 <div class="pages-list-card__description">Описание: {{ page.description }}</div>
                 <div class="pages-list-card__description">Адрес: {{ page.url }}</div>

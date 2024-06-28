@@ -1,6 +1,5 @@
 import { defineStore } from 'pinia'
 import { projectsDefault } from '@/data/projectsDefault'
-import pageIcon from '../../assets/images/cat.jpg'
 
 export const useProjectsStore = defineStore('projects', {
     state: () => ({
@@ -46,7 +45,7 @@ export const useProjectsStore = defineStore('projects', {
                         title: 'Page 1',
                         description: 'Тестовое описание',
                         url: 'Тестовый адрес',
-                        icon: pageIcon,
+                        icon: '/src/assets/images/cat.jpg',
                         content: []
                     }
                 ]
@@ -67,7 +66,7 @@ export const useProjectsStore = defineStore('projects', {
                     title: `Page ${id}`,
                     description: 'Тестовое описание',
                     url: 'Тестовый адрес',
-                    icon: pageIcon,
+                    icon: '/src/assets/images/cat.jpg',
                     content: []
                 })
                 this.updateLocalStorageProjects()

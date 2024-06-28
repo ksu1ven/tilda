@@ -18,8 +18,8 @@ const router = createRouter({
         },
         {
             path: '/project/:projectId/edit/:pageId',
-            name: 'EditView',
-            component: () => import('../views/EditView.vue')
+            name: 'EditContentView',
+            component: () => import('../views/EditContentView.vue')
         },
         {
             path: '/project/:projectId/preview/:pageId',

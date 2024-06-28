@@ -17,21 +17,18 @@
         />
     </div>
     <RouterLink
-        :to="{ name: 'EditView', params: { projectId, pageId } }"
+        :to="{ name: 'EditContentView', params: { projectId, pageId } }"
         class="button-link button-link--colored preview-blocks-list__link"
         >Вернуться к редактированию</RouterLink
     >
 </template>
 
 <script>
-import pageIcon from '../../../../assets/images/cat.jpg'
-import pageIcon2 from '../../../../assets/images/cat 2.jpg'
-import pageIcon3 from '../../../../assets/images/cat 3.jpg'
 import { useProjectsStore } from '../../../../stores'
 import { mapState } from 'pinia'
-import HeaderBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/HeaderBlock.vue'
-import TextBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/TextBlock.vue'
-import ImgTextBlock from '@/components/Sections/EditView/EditBlocksList/EditBlock/ImgTextBlock.vue'
+import HeaderBlock from '@/components/Sections/EditContentView/EditBlocksList/EditBlock/HeaderBlock.vue'
+import TextBlock from '@/components/Sections/EditContentView/EditBlocksList/EditBlock/TextBlock.vue'
+import ImgTextBlock from '@/components/Sections/EditContentView/EditBlocksList/EditBlock/ImgTextBlock.vue'
 import SliderBlock from './PreviewBlock/PreviewSliderBlock.vue'
 
 export default {
@@ -80,7 +77,7 @@ export default {
                         this.blocksComponentsList.push({
                             component: 'ImgTextBlock',
                             props: {
-                                backgroundImage: `url(${block.icon || pageIcon})`,
+                                backgroundImage: `url(${block.icon || '/src/assets/images/cat.jpg'})`,
                                 text: block.text,
                                 h2: block.h2
                             }
@@ -91,12 +88,12 @@ export default {
                             component: 'SliderBlock',
                             props: {
                                 imageArr: block.imageArr || [
-                                    pageIcon,
-                                    pageIcon2,
-                                    pageIcon3,
-                                    pageIcon,
-                                    pageIcon2,
-                                    pageIcon3
+                                    '/src/assets/images/cat.jpg',
+                                    '/src/assets/images/cat 2.jpg',
+                                    '/src/assets/images/cat 3.jpg',
+                                    '/src/assets/images/cat.jpg',
+                                    '/src/assets/images/cat 2.jpg',
+                                    '/src/assets/images/cat 3.jpg'
                                 ]
                             }
                         })

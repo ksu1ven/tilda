@@ -9,7 +9,7 @@
 
 <script>
 import HeaderApp from '@/components/HeaderApp.vue'
-import ProjectsList from '@/components/Sections/ProjectsHomeView/ProjectsList/ProjectsList.vue'
+import ProjectsList from '@/components/Sections/ProjectsMainView/ProjectsList/ProjectsList.vue'
 
 export default {
     components: { HeaderApp, ProjectsList }

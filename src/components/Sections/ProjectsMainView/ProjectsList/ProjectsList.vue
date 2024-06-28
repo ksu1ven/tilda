@@ -32,13 +32,6 @@ export default {
     },
     methods: {
         ...mapActions(useProjectsStore, ['addProject'])
-
-        // editTitle(ind, newTitle) {
-        //     this.projectsList[ind] = {
-        //         title: newTitle,
-        //         defaultTitle: false
-        //     }
-        // }
     }
 }
 </script>
